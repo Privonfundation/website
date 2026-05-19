@@ -29,7 +29,7 @@ export const TRANSLATIONS = {
     VERSE_1_REF: 'Ioan| 8:32',
     VERSE_2: 'Unde este Duhul Domnului|, acolo este libertate.',
     VERSE_2_REF: '2 Corinteni| 3:17',
-    APPS_SECTION_TITLE: 'Ecosistemul Sovereign',
+    APPS_SECTION_TITLE: 'Proiecte',
     APPS: [
       { id: '01', title: 'Crypta', tagline: 'Seif Digital', desc: 'Stocare ultra-securizată cu criptare fragmentată. Datele tale nu părăsesc niciodată controlul tău sub formă necriptată.', icon: 'fa-solid fa-vault' },
       { id: '02', title: 'Ghost', tagline: 'Identitate Zero', desc: 'Sistem de identitate anonimă care îți permite să interacționezi cu serviciile web fără a dezvălui date reale.', icon: 'fa-solid fa-user-secret' },
@@ -86,7 +86,7 @@ export const TRANSLATIONS = {
     VERSE_1_REF: 'John| 8:32',
     VERSE_2: 'Where the Spirit of the Lord is|, there is freedom.',
     VERSE_2_REF: '2 Corinthians| 3:17',
-    APPS_SECTION_TITLE: 'Sovereign Ecosystem',
+    APPS_SECTION_TITLE: 'Projects',
     APPS: [
       { id: '01', title: 'Crypta', tagline: 'Digital Vault', desc: 'Ultra-secure storage with fragmented encryption. Your data never leaves your control in unencrypted form.', icon: 'fa-solid fa-vault' },
       { id: '02', title: 'Ghost', tagline: 'Zero Identity', desc: 'Anonymous identity system that lets you interact with web services without revealing real data.', icon: 'fa-solid fa-user-secret' },
@@ -141,7 +141,7 @@ export const TRANSLATIONS = {
     VERSE_1_REF: 'Juan| 8:32',
     VERSE_2: 'Donde está el Espíritu del Señor|, allí hay libertad.',
     VERSE_2_REF: '2 Corintios| 3:17',
-    APPS_SECTION_TITLE: 'Ecosistema Soberano',
+    APPS_SECTION_TITLE: 'Proyectos',
     APPS: [
       { id: '01', title: 'Crypta', tagline: 'Bóveda Digital', desc: 'Almacenamiento ultra-seguro con cifrado fragmentado. Tus datos nunca salen de tu control sin cifrar.', icon: 'fa-solid fa-vault' },
       { id: '02', title: 'Ghost', tagline: 'Identidad Cero', desc: 'Sistema de identidad anónima que te permite interactuar con servicios web sin revelar datos reales.', icon: 'fa-solid fa-user-secret' },

@@ -64,7 +64,7 @@ export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => 
       <div className="relative z-20 px-6 md:px-20 mb-4">
         <div className="flex items-center gap-4 mb-2">
            <div className="h-[1px] w-12 bg-[#ffffff]"></div>
-           <span className="text-[#ffffff] font-mono text-[10px] uppercase tracking-[0.4em] font-bold">Terminal_Output</span>
+           <span className="text-[#ffffff] font-mono text-[10px] uppercase tracking-[0.4em] font-bold">Open Source</span>
         </div>
         <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">
           {t.APPS_SECTION_TITLE}
