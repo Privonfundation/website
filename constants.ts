@@ -36,10 +36,15 @@ export const TRANSLATIONS = {
       { id: '03', title: 'Nexus', tagline: 'Comunicații P2P', desc: 'Protocol de mesagerie peer-to-peer fără servere centrale. Intimitate absolută în orice conversație.', icon: 'fa-solid fa-network-wired' }
     ],
     NAV: {
+      HOME: 'Acasă',
+      VERSE: 'Versete',
+      PROTOCOL: 'Protocol',
+      PHILOSOPHY: 'Filozofie',
       VISION: 'Viziune',
       VAULT: 'Aplicații',
       INFRA: 'Infrastructură',
       ETHICS: 'Etică',
+      ABOUT: 'Despre Noi',
       CONTACT: 'Contact',
       MENU: 'Meniu'
     },
@@ -88,10 +93,15 @@ export const TRANSLATIONS = {
       { id: '03', title: 'Nexus', tagline: 'P2P Comms', desc: 'Peer-to-peer messaging protocol without central servers. Absolute privacy in every conversation.', icon: 'fa-solid fa-network-wired' }
     ],
     NAV: {
+      HOME: 'Home',
+      VERSE: 'Verse',
+      PROTOCOL: 'Protocol',
+      PHILOSOPHY: 'Philosophy',
       VISION: 'Vision',
       VAULT: 'Apps',
       INFRA: 'Infrastructure',
       ETHICS: 'Ethics',
+      ABOUT: 'About Us',
       CONTACT: 'Contact',
       MENU: 'Menu'
     },
@@ -138,10 +148,15 @@ export const TRANSLATIONS = {
       { id: '03', title: 'Nexus', tagline: 'Comunicaciones P2P', desc: 'Protocolo de mensajería peer-to-peer sin servidores centrales. Privacidad absoluta en cada conversación.', icon: 'fa-solid fa-network-wired' }
     ],
     NAV: {
+      HOME: 'Inicio',
+      VERSE: 'Versos',
+      PROTOCOL: 'Protocolo',
+      PHILOSOPHY: 'Filosofía',
       VISION: 'Visión',
       VAULT: 'Apps',
       INFRA: 'Infraestructura',
       ETHICS: 'Ética',
+      ABOUT: 'Sobre Nosotros',
       CONTACT: 'Contacto',
       MENU: 'Menú'
     },

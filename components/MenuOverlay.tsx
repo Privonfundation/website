@@ -1,313 +1,94 @@
+
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Silk from './Silk';
+import { Logo } from './Logo';
+import { TRANSLATIONS } from '../constants';
 
 interface MenuOverlayProps {
   onClose: () => void;
+  lang: 'ro' | 'en' | 'es';
 }
 
-export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose }) => {
+export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose, lang }) => {
   const overlayRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const t = TRANSLATIONS[lang];
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-    
     const overlay = overlayRef.current;
     if (!overlay) return;
-
-    const handleOverlayClick = (e: MouseEvent) => {
-      if (e.target === overlay) onClose();
-    };
-
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
     };
-
-    overlay.addEventListener('click', handleOverlayClick);
     document.addEventListener('keydown', handleKeyDown);
-
     return () => {
       document.body.style.overflow = '';
-      overlay.removeEventListener('click', handleOverlayClick);
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose]);
 
-  const handleNavigation = (path: string) => {
+  const handleNav = (path: string) => {
     onClose();
-    navigate(path);
+    if (path.startsWith('/')) navigate(path);
+    else {
+      const el = document.getElementById(path);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
+  const items = [
+    { id: 'hero', label: t.NAV.HOME, num: '01' },
+    { id: 'verse', label: t.NAV.VERSE, num: '02' },
+    { id: 'vision', label: t.NAV.PROTOCOL, num: '03' },
+    { id: 'philosophy', label: t.NAV.PHILOSOPHY, num: '04' },
+    { id: 'the_vault', label: t.NAV.VAULT, num: '05' },
+    { id: '/about', label: t.NAV.ABOUT, num: '06' },
+  ];
+
   return (
-    <div 
+    <div
       ref={overlayRef}
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100vw',
-        height: '100dvh',
-        background: 'linear-gradient(135deg, rgba(0,0,0,0.98) 0%, rgba(10,10,10,0.98) 100%)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        zIndex: 99999,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        cursor: 'pointer',
-        margin: 0,
-        padding: 0
-      }}
+      className="fixed inset-0 z-[99999] flex items-center justify-center"
+      onClick={(e) => { if (e.target === overlayRef.current) onClose(); }}
     >
-      <style>{`
-        @media (max-width: 767px) {
-          .menu-heading { font-size: 28px !important; }
-          .menu-item { padding: 12px 16px !important; gap: 14px !important; }
-          .menu-container { gap: 6px !important; }
-          .menu-close { top: 16px !important; right: 16px !important; width: 40px !important; height: 40px !important; font-size: 16px !important; }
-        }
-      `}</style>
-      {/* Close button */}
+      <div className="absolute inset-0 bg-black/95 backdrop-blur-xl" />
+      <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)' }}>
+        <Silk speed={3} scale={0.8} color="#39FF14" noiseIntensity={1} rotation={0} />
+      </div>
+      <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: `radial-gradient(rgba(57,255,20,0.03) 1px, transparent 1px)`, backgroundSize: '40px 40px' }}></div>
+
       <button
-        className="menu-close"
-        onClick={(e) => {
-          e.stopPropagation();
-          onClose();
-        }}
-        style={{
-          position: 'fixed',
-          top: '30px',
-          right: '30px',
-          background: 'transparent',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
-          color: 'rgba(255, 255, 255, 0.6)',
-          width: '50px',
-          height: '50px',
-          borderRadius: '50%',
-          cursor: 'pointer',
-          fontSize: '20px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          transition: 'all 0.3s ease',
-          zIndex: 100000
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = '#39FF14';
-          e.currentTarget.style.color = '#39FF14';
-          e.currentTarget.style.transform = 'rotate(90deg)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-          e.currentTarget.style.color = 'rgba(255, 255, 255, 0.6)';
-          e.currentTarget.style.transform = 'rotate(0deg)';
-        }}
+        onClick={onClose}
+        className="absolute top-5 right-5 md:top-10 md:right-10 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white/50 hover:text-[#39FF14] hover:border-[#39FF14]/40 hover:bg-[#39FF14]/10 transition-all z-10"
       >
-        ✕
+        <i className="fa-solid fa-xmark text-lg md:text-xl"></i>
       </button>
 
-      {/* Menu content */}
-      <div 
-        className="menu-container"
-        onClick={(e) => e.stopPropagation()}
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '20px',
-          cursor: 'default'
-        }}
-      >
-        {/* Home */}
-        <div
-          className="menu-item"
-          onClick={() => handleNavigation('/')}
-          style={{
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '24px',
-            padding: '20px 40px',
-            borderRadius: '12px',
-            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
-          onMouseEnter={(e) => {
-            const target = e.currentTarget;
-            target.style.background = 'rgba(57, 255, 20, 0.05)';
-            target.style.paddingLeft = '60px';
-            const number = target.querySelector('.menu-number') as HTMLElement;
-            const line = target.querySelector('.menu-line') as HTMLElement;
-            if (number) number.style.color = '#39FF14';
-            if (line) {
-              line.style.width = '40px';
-              line.style.background = '#39FF14';
-            }
-          }}
-          onMouseLeave={(e) => {
-            const target = e.currentTarget;
-            target.style.background = 'transparent';
-            target.style.paddingLeft = '40px';
-            const number = target.querySelector('.menu-number') as HTMLElement;
-            const line = target.querySelector('.menu-line') as HTMLElement;
-            if (number) number.style.color = 'rgba(255, 255, 255, 0.3)';
-            if (line) {
-              line.style.width = '20px';
-              line.style.background = 'rgba(255, 255, 255, 0.2)';
-            }
-          }}
-        >
-          <span 
-            className="menu-number"
-            style={{
-              fontSize: '14px',
-              fontFamily: 'monospace',
-              color: 'rgba(255, 255, 255, 0.3)',
-              minWidth: '40px',
-              transition: 'color 0.4s ease'
-            }}
+      <div className="relative z-10 flex flex-col items-center gap-2 md:gap-3 px-6" onClick={(e) => e.stopPropagation()}>
+        {items.map((item, i) => (
+          <button
+            key={item.id}
+            onClick={() => handleNav(item.id)}
+            className="group flex items-center gap-4 md:gap-8 px-6 md:px-16 py-3 md:py-5 rounded-2xl hover:bg-[#39FF14]/[0.04] transition-all duration-500 w-full max-w-lg"
+            style={{ animation: `menuItemIn 0.5s ${i * 0.08}s both` }}
           >
-            01
-          </span>
-          <div 
-            className="menu-line"
-            style={{
-              width: '20px',
-              height: '1px',
-              background: 'rgba(255, 255, 255, 0.2)',
-              transition: 'all 0.4s ease'
-            }}
-          />
-          <h3 className="menu-heading" style={{
-            fontSize: '48px',
-            fontWeight: 900,
-            textTransform: 'uppercase',
-            color: '#ffffff',
-            margin: 0,
-            letterSpacing: '0.05em',
-            transition: 'all 0.4s ease'
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.color = '#39FF14';
-            (e.currentTarget as HTMLElement).style.letterSpacing = '0.1em';
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.color = '#ffffff';
-            (e.currentTarget as HTMLElement).style.letterSpacing = '0.05em';
-          }}
-          >
-            Home
-          </h3>
-        </div>
-
-        {/* About */}
-        <div
-          className="menu-item"
-          onClick={() => handleNavigation('/about')}
-          style={{
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '24px',
-            padding: '20px 40px',
-            borderRadius: '12px',
-            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
-          onMouseEnter={(e) => {
-            const target = e.currentTarget;
-            target.style.background = 'rgba(57, 255, 20, 0.05)';
-            target.style.paddingLeft = '60px';
-            const number = target.querySelector('.menu-number') as HTMLElement;
-            const line = target.querySelector('.menu-line') as HTMLElement;
-            if (number) number.style.color = '#39FF14';
-            if (line) {
-              line.style.width = '40px';
-              line.style.background = '#39FF14';
-            }
-          }}
-          onMouseLeave={(e) => {
-            const target = e.currentTarget;
-            target.style.background = 'transparent';
-            target.style.paddingLeft = '40px';
-            const number = target.querySelector('.menu-number') as HTMLElement;
-            const line = target.querySelector('.menu-line') as HTMLElement;
-            if (number) number.style.color = 'rgba(255, 255, 255, 0.3)';
-            if (line) {
-              line.style.width = '20px';
-              line.style.background = 'rgba(255, 255, 255, 0.2)';
-            }
-          }}
-        >
-          <span 
-            className="menu-number"
-            style={{
-              fontSize: '14px',
-              fontFamily: 'monospace',
-              color: 'rgba(255, 255, 255, 0.3)',
-              minWidth: '40px',
-              transition: 'color 0.4s ease'
-            }}
-          >
-            02
-          </span>
-          <div 
-            className="menu-line"
-            style={{
-              width: '20px',
-              height: '1px',
-              background: 'rgba(255, 255, 255, 0.2)',
-              transition: 'all 0.4s ease'
-            }}
-          />
-          <h3 className="menu-heading" style={{
-            fontSize: '48px',
-            fontWeight: 900,
-            textTransform: 'uppercase',
-            color: '#ffffff',
-            margin: 0,
-            letterSpacing: '0.05em',
-            transition: 'all 0.4s ease'
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.color = '#39FF14';
-            (e.currentTarget as HTMLElement).style.letterSpacing = '0.1em';
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.color = '#ffffff';
-            (e.currentTarget as HTMLElement).style.letterSpacing = '0.05em';
-          }}
-          >
-            About Us
-          </h3>
-        </div>
+            <span className="text-[10px] md:text-sm font-mono text-white/20 group-hover:text-[#39FF14] transition-colors w-8 md:w-12 text-right">{item.num}</span>
+            <div className="w-6 md:w-10 h-px bg-white/10 group-hover:w-12 md:group-hover:w-20 group-hover:bg-[#39FF14] transition-all duration-500"></div>
+            <span className="text-lg md:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white/80 group-hover:text-[#39FF14] group-hover:tracking-[0.05em] transition-all duration-500">
+              {item.label}
+            </span>
+          </button>
+        ))}
       </div>
 
-      {/* Footer */}
-      <div style={{
-        position: 'absolute',
-        bottom: '40px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '16px'
-      }}>
-        <div style={{
-          width: '60px',
-          height: '1px',
-          background: 'linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.5), transparent)'
-        }} />
-        <p style={{
-          fontSize: '11px',
-          color: 'rgba(255, 255, 255, 0.25)',
-          textTransform: 'uppercase',
-          letterSpacing: '0.3em',
-          margin: 0
-        }}>
-          Obscurity Security
-        </p>
+      <div className="absolute bottom-6 md:bottom-10 flex flex-col items-center gap-3 z-10">
+        <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#39FF14]/40 to-transparent"></div>
+        <div className="flex items-center gap-3">
+          <Logo className="w-5 h-5" glow={false} color="#39FF14" />
+          <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.4em]">Obscurity Security</span>
+        </div>
       </div>
     </div>
   );

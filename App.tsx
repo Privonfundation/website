@@ -381,7 +381,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      <section className="relative py-32 md:py-48 overflow-hidden bg-white">
+      <section id="philosophy" className="relative py-32 md:py-48 overflow-hidden bg-white">
         <div className="absolute bottom-0 left-0 w-full h-32 z-10" style={{ background: 'linear-gradient(to top, #000, transparent)' }}></div>
         <div className="max-w-7xl mx-auto px-6 relative z-20">
           <div className="flex items-center gap-4 mb-6">

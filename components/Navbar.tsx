@@ -141,7 +141,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang }) => {
         </div>
       </nav>
 
-      {menuOpen && <MenuOverlay onClose={closeMenu} />}
+      {menuOpen && <MenuOverlay onClose={closeMenu} lang={lang} />}
     </>
   );
 };
