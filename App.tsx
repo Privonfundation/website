@@ -118,7 +118,7 @@ const App: React.FC = () => {
       <Navbar lang={lang} setLang={setLang} />
 
       <section ref={heroRef} id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-5 pt-32 md:pt-48 overflow-visible">
-        <div className="absolute inset-0 z-[1] pointer-events-none">
+        <div className="absolute inset-0 z-[1] pointer-events-none opacity-40">
           <Silk speed={5} scale={1} color="#39FF14" noiseIntensity={1.5} rotation={0} />
         </div>
         
