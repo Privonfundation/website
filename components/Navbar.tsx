@@ -86,11 +86,11 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang }) => {
             <div ref={langRef} className="relative">
               <button 
                 onClick={() => setLangOpen(prev => !prev)}
-                className="flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/[0.18] transition-all active:scale-95"
+                className="flex items-center justify-center md:gap-2 w-10 h-10 md:w-auto md:h-auto md:px-4 md:py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/[0.18] transition-all active:scale-95"
               >
-                <i className="fa-solid fa-globe text-white/60 text-xs"></i>
-                <span className="text-[8px] md:text-[9px] font-mono font-bold text-white/70 tracking-wider">{currentLang.label.toUpperCase()}</span>
-                <i className={`fa-solid fa-chevron-down text-white/60 text-[6px] transition-transform duration-300 ${langOpen ? 'rotate-180' : ''}`}></i>
+                <i className="fa-solid fa-globe text-white/60 text-sm md:text-sm"></i>
+                <span className="hidden md:inline text-[9px] font-mono font-bold text-white/70 tracking-wider">{currentLang.label.toUpperCase()}</span>
+                <i className={`hidden md:inline fa-solid fa-chevron-down text-white/60 text-[6px] transition-transform duration-300 ${langOpen ? 'rotate-180' : ''}`}></i>
               </button>
 
               {langOpen && (
@@ -123,13 +123,13 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang }) => {
             
             <button 
               onClick={toggleMenu}
-              className="group flex items-center gap-3 md:gap-4 py-1.5 md:py-2 pl-3 md:pl-4 pr-1.5 md:pr-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-all active:scale-95"
+              className="group flex items-center justify-center md:gap-4 w-10 h-10 md:w-auto md:h-auto md:py-2 md:pl-4 md:pr-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-all active:scale-95"
             >
-              <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] text-white/60 group-hover:text-white pt-0.5">{t.NAV.MENU}</span>
+              <span className="hidden md:inline text-[9px] font-bold uppercase tracking-[0.4em] text-white/60 group-hover:text-white pt-0.5">{t.NAV.MENU}</span>
               <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white flex items-center justify-center group-hover:bg-[#39FF14] transition-all">
                 <div className="relative w-2.5 h-2.5 md:w-3 md:h-3 flex flex-col justify-center items-center gap-[2.5px] md:gap-[3px]">
-                  <span className={`h-[1.2px] md:h-[1.5px] bg-black transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[2px] w-3' : 'w-3'}`}></span>
-                  <span className={`h-[1.2px] md:h-[1.5px] bg-black transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[2px] w-3' : 'w-1.5 self-end'}`}></span>
+                  <span className={`h-[1.2px] md:h-[1.5px] bg-black transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[2px] w-3 md:w-3' : 'w-3 md:w-3'}`}></span>
+                  <span className={`h-[1.2px] md:h-[1.5px] bg-black transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[2px] w-3 md:w-3' : 'w-1.5 md:w-1.5 self-end'}`}></span>
                 </div>
               </div>
             </button>
