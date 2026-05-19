@@ -197,7 +197,7 @@ const App: React.FC = () => {
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-blueprint opacity-5"></div>
           <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black to-transparent z-10"></div>
-          <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black to-transparent z-10"></div>
+          <div className="absolute bottom-0 left-0 w-full h-32 z-10" style={{ background: 'linear-gradient(to top, #1a1a1e, transparent)' }}></div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#39FF14] blur-[120px] opacity-20"></div>
         </div>
 
@@ -292,8 +292,9 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      <section id="vision" className="py-32 md:py-64 relative overflow-hidden border-t border-white/5 section-content-visibility" style={{ background: '#1a1a1e' }}>
+      <section id="vision" className="py-32 md:py-64 relative overflow-hidden section-content-visibility" style={{ background: '#1a1a1e' }}>
         <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-32 z-10" style={{ background: 'linear-gradient(to bottom, transparent, #1a1a1e)' }}></div>
           <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)`, backgroundSize: '32px 32px' }}></div>
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
           <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-white/5 via-transparent to-transparent"></div>
