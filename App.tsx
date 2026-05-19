@@ -20,16 +20,16 @@ const renderHighlighted = (text: string, className = '') => {
 };
 
 const ArticleCard = memo(({ art }: { art: any }) => (
-  <div className="flex-shrink-0 relative bg-[#080808] border border-white/8 rounded-2xl p-5 md:p-6 overflow-hidden min-w-[240px] md:min-w-[300px] max-w-[240px] md:max-w-[300px] transition-all duration-500">
+  <div className="flex-shrink-0 relative bg-[#080808] border border-white/8 rounded-2xl p-4 md:p-5 overflow-hidden min-w-[180px] md:min-w-[220px] max-w-[180px] md:max-w-[220px] transition-all duration-500">
     <div className="absolute inset-0 opacity-[0.04]"
          style={{ backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
-    <div className="relative z-10 flex flex-col gap-2.5">
+    <div className="relative z-10 flex flex-col gap-2">
       <div className="flex items-center justify-between">
-        <span className="text-[9px] font-mono text-white/40 tracking-wider">{art.id}</span>
-        <span className="text-[7px] font-mono text-white/25 uppercase tracking-[0.2em] bg-white/5 px-2.5 py-0.5 rounded-full border border-white/5">{art.pilar}</span>
+        <span className="text-[8px] font-mono text-white/40 tracking-wider">{art.id}</span>
+        <span className="text-[7px] font-mono text-white/25 uppercase tracking-[0.2em] bg-white/5 px-2 py-0.5 rounded-full border border-white/5">{art.pilar}</span>
       </div>
-      <h4 className="text-sm md:text-base font-black uppercase tracking-tight text-white/90 leading-tight">{art.title}</h4>
-      <p className="text-[10px] font-mono text-white/40 leading-relaxed line-clamp-2">{art.desc}</p>
+      <h4 className="text-xs md:text-sm font-black uppercase tracking-tight text-white/90 leading-tight">{art.title}</h4>
+      <p className="text-[9px] font-mono text-white/40 leading-relaxed line-clamp-2">{art.desc}</p>
       <div className="flex items-center gap-2 mt-0.5">
         <span className="w-1.5 h-1.5 rounded-full bg-[#ffffff]/50 shadow-[0_0_6px_rgba(255,255,255,0.2)]" />
         <span className="text-[7px] font-mono text-white/15">{art.status}</span>
