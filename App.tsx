@@ -325,9 +325,14 @@ const App: React.FC = () => {
                <div className="h-px w-16 bg-[#39FF14]"></div>
                <span className="text-[#39FF14] font-mono text-xs uppercase tracking-[0.6em] font-bold">{t.THE_STANDARD}</span>
             </div>
-            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-16 leading-[0.85]">
-              {t.PACT_TITLE.split(':')[0]}: <br/>
-              <span className="text-white/10">{t.PACT_TITLE.split(':')[1]}</span>
+            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-16 leading-[0.85] relative">
+              <span className="animate-glitch-protocol">
+                {t.PACT_TITLE.split(':')[0]}<span className="text-[#39FF14]/30">:</span>
+              </span>
+              <br/>
+              <span className="text-white/10 block animate-nod">
+                {t.PACT_TITLE.split(':')[1]}
+              </span>
             </h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-32">
