@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Logo } from './Logo';
 import { TRANSLATIONS } from '../constants';
@@ -13,11 +13,9 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose, lang }) => {
   const overlayRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const t = TRANSLATIONS[lang];
-  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-    requestAnimationFrame(() => setVisible(true));
     const overlay = overlayRef.current;
     if (!overlay) return;
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -53,43 +51,43 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose, lang }) => {
       ref={overlayRef}
       className="fixed inset-0 z-[99999] flex flex-col items-center justify-center"
       onClick={(e) => { if (e.target === overlayRef.current) onClose(); }}
+      style={{ background: 'rgba(0,0,0,0.97)' }}
     >
-      <div className="absolute inset-0 bg-black/95 backdrop-blur-2xl" />
-      <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: `radial-gradient(rgba(57,255,20,0.04) 1px, transparent 1px)`, backgroundSize: '40px 40px' }}></div>
-      <div className="absolute top-0 left-1/4 w-px h-3/4 bg-gradient-to-b from-[#39FF14]/10 via-transparent to-transparent pointer-events-none"></div>
-      <div className="absolute bottom-0 right-1/4 w-px h-3/4 bg-gradient-to-t from-[#39FF14]/10 via-transparent to-transparent pointer-events-none"></div>
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(rgba(57,255,20,0.06) 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+        <div className="absolute top-0 left-1/4 w-px h-3/4 bg-gradient-to-b from-[#39FF14]/10 via-transparent to-transparent"></div>
+        <div className="absolute bottom-0 right-1/4 w-px h-3/4 bg-gradient-to-t from-[#39FF14]/10 via-transparent to-transparent"></div>
+      </div>
 
       <button
         onClick={onClose}
-        className="absolute top-5 right-5 md:top-10 md:right-10 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white/50 hover:text-[#39FF14] hover:border-[#39FF14]/40 hover:bg-[#39FF14]/10 transition-all"
+        className="absolute top-5 right-5 md:top-10 md:right-10 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white/60 hover:text-[#39FF14] hover:border-[#39FF14]/40 hover:bg-[#39FF14]/10 transition-all"
       >
-        <i className="fa-solid fa-xmark text-lg md:text-xl"></i>
+        <i className="fa-solid fa-xmark text-xl md:text-2xl"></i>
       </button>
 
-      <div className="relative flex flex-col items-center gap-1 md:gap-2 px-6 max-w-lg w-full" onClick={(e) => e.stopPropagation()}>
+      <div className="relative z-20 flex flex-col items-stretch gap-1 md:gap-2 px-6 w-full max-w-lg" onClick={(e) => e.stopPropagation()}>
         {items.map((item, i) => (
           <button
             key={item.id}
             onClick={() => handleNav(item.id)}
-            className={`group flex items-center gap-4 md:gap-6 px-6 md:px-10 py-3 md:py-4 rounded-2xl hover:bg-[#39FF14]/[0.04] transition-all duration-500 w-full text-left ${
-              visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-            style={{ transition: `opacity 0.5s ${0.1 + i * 0.08}s, transform 0.5s ${0.1 + i * 0.08}s` }}
+            className="group flex items-center gap-4 md:gap-6 px-6 md:px-10 py-3 md:py-4 rounded-2xl hover:bg-[#39FF14]/[0.04] transition-all duration-500 text-left"
+            style={{ animation: `menuItemIn 0.5s ${0.1 + i * 0.08}s both` }}
           >
-            <span className="text-[10px] md:text-sm font-mono text-white/20 group-hover:text-[#39FF14] transition-colors w-8 md:w-10 text-right flex-shrink-0">{item.num}</span>
-            <div className="w-6 md:w-8 h-px bg-white/10 group-hover:w-10 md:group-hover:w-14 group-hover:bg-[#39FF14] transition-all duration-500 flex-shrink-0"></div>
-            <span className="text-xl md:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white/80 group-hover:text-[#39FF14] group-hover:tracking-wider transition-all duration-500">
+            <span className="text-[10px] md:text-sm font-mono text-white/30 group-hover:text-[#39FF14] transition-colors w-8 md:w-10 text-right flex-shrink-0">{item.num}</span>
+            <div className="w-6 md:w-8 h-px bg-white/20 group-hover:w-10 md:group-hover:w-14 group-hover:bg-[#39FF14] transition-all duration-500 flex-shrink-0"></div>
+            <span className="text-xl md:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white/90 group-hover:text-[#39FF14] group-hover:tracking-wider transition-all duration-500">
               {item.label}
             </span>
           </button>
         ))}
       </div>
 
-      <div className="absolute bottom-6 md:bottom-10 flex flex-col items-center gap-3">
+      <div className="absolute bottom-6 md:bottom-10 flex flex-col items-center gap-3 z-20">
         <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#39FF14]/40 to-transparent"></div>
         <div className="flex items-center gap-3">
           <Logo className="w-5 h-5" glow={false} color="#39FF14" />
-          <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.4em]">Obscurity Security</span>
+          <span className="text-[9px] font-mono text-white/30 uppercase tracking-[0.4em]">Obscurity Security</span>
         </div>
       </div>
     </div>
