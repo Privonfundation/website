@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState, memo, useRef } from 'react';
+import React, { useEffect, useState, memo, useRef, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Typewriter } from './components/Typewriter';
@@ -8,6 +8,8 @@ import { Logo } from './components/Logo';
 import { CyberVault } from './components/CyberVault';
 import { TRANSLATIONS, PROTOCOL_ARTICLES } from './constants';
 import { KeepAndroidOpen } from './components/KeepAndroidOpen';
+import CircularGallery from './components/CircularGallery';
+import { generateArticleImageUrl } from './components/articleImage';
 
 const renderHighlighted = (text: string, className = '') => {
   const parts = text.split('|');
@@ -20,24 +22,6 @@ const renderHighlighted = (text: string, className = '') => {
   );
 };
 
-const ArticleCard = memo(({ art }: { art: any }) => (
-  <div className="flex-shrink-0 flex flex-col justify-between gap-1.5 px-3 md:px-5 py-2.5 md:py-3 rounded-xl border border-white/10 bg-white/[0.02] min-w-[200px] md:min-w-[270px] max-w-[200px] md:max-w-[270px] h-[72px] md:h-[82px]">
-    <div className="flex items-center gap-1.5">
-      <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14]/60 flex-shrink-0"></span>
-      <span className="text-[7px] font-mono text-white/25 tracking-wider">{art.id}</span>
-      <span className="text-xs md:text-sm font-bold text-white/80 truncate leading-tight">{art.title}</span>
-    </div>
-    <p className="text-[9px] md:text-[10px] font-mono text-white/40 leading-tight line-clamp-1 text-ellipsis overflow-hidden">
-      {art.desc}
-    </p>
-    <div className="flex items-center gap-1.5">
-      <span className="text-[6px] md:text-[7px] font-mono text-white/20 uppercase tracking-[0.2em]">{art.pilar}</span>
-      <span className="text-[5px] text-white/10">·</span>
-      <span className="text-[6px] md:text-[7px] font-mono text-white/15">{art.status}</span>
-    </div>
-  </div>
-));
-
 const App: React.FC = () => {
   const [active, setActive] = useState(false);
   const [lang, setLang] = useState<'ro' | 'en' | 'es'>('en');
@@ -49,7 +33,16 @@ const App: React.FC = () => {
   const t = TRANSLATIONS[lang];
   const articles = PROTOCOL_ARTICLES[lang];
   const pillars = [...new Set(articles.map((a: any) => a.pilar))];
-  const mid = Math.ceil(articles.length / 2);
+
+  const galleryItems = useMemo(() =>
+    typeof document !== 'undefined'
+      ? articles.map((art: any) => ({
+          image: generateArticleImageUrl(art.id, art.title, art.pilar),
+          text: art.title
+        }))
+      : [],
+    [articles]
+  );
 
   useEffect(() => {
     const timer = requestAnimationFrame(() => setActive(true));
@@ -313,19 +306,17 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            <div className="group relative overflow-hidden rounded-xl border border-white/5 bg-black/40 pt-2 md:pt-3 px-2">
-              <div className="animate-scroll-ticker flex gap-2 md:gap-3 pb-2 md:pb-3">
-                {[...articles.slice(0, mid), ...articles.slice(0, mid)].map((art: any, i: number) => (
-                  <ArticleCard key={`r1-${art.id}-${i}`} art={art} />
-                ))}
-              </div>
-              <div className="animate-scroll-ticker-reverse flex gap-2 md:gap-3 pb-2 md:pb-3">
-                {[...articles.slice(mid), ...articles.slice(mid)].map((art: any, i: number) => (
-                  <ArticleCard key={`r2-${art.id}-${i}`} art={art} />
-                ))}
-              </div>
-              <div className="absolute inset-y-0 left-0 w-16 md:w-24 bg-gradient-to-r from-[#1a1a1e] to-transparent pointer-events-none z-10"></div>
-              <div className="absolute inset-y-0 right-0 w-16 md:w-24 bg-gradient-to-r from-transparent to-[#1a1a1e] pointer-events-none z-10"></div>
+            <div className="relative overflow-hidden rounded-xl border border-white/5 bg-black/40" style={{ height: '420px' }}>
+              <CircularGallery
+                items={galleryItems}
+                bend={2}
+                textColor="#39FF14"
+                borderRadius={0.06}
+                font="bold 14px Geist"
+                scrollSpeed={2}
+                scrollEase={0.04}
+              />
+              <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#1a1a1e] to-transparent pointer-events-none z-10"></div>
             </div>
           </div>
         </div>
