@@ -272,6 +272,34 @@ const App: React.FC = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] md:w-[800px] opacity-[0.08] blur-[3px] pointer-events-none">
             <Logo className="w-full h-full" glow={false} color="#39FF14" />
           </div>
+          <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+            {[
+              { name: 'Google', x: '5%', y: '8%', r: -12, s: 1 },
+              { name: 'Microsoft', x: '72%', y: '5%', r: 8, s: 0.9 },
+              { name: 'Apple', x: '15%', y: '35%', r: 5, s: 0.7 },
+              { name: 'Meta', x: '78%', y: '40%', r: -10, s: 0.8 },
+              { name: 'Amazon', x: '8%', y: '65%', r: 15, s: 0.6 },
+              { name: 'OpenAI', x: '65%', y: '72%', r: -7, s: 0.7 },
+              { name: 'TikTok', x: '50%', y: '10%', r: -20, s: 0.85 },
+              { name: 'X Corp', x: '85%', y: '20%', r: 25, s: 0.65 },
+              { name: 'Netflix', x: '20%', y: '80%', r: -5, s: 0.55 },
+              { name: 'Oracle', x: '70%', y: '88%', r: 12, s: 0.5 },
+            ].map((c, i) => (
+              <div
+                key={c.name}
+                className="absolute font-black uppercase tracking-tighter whitespace-nowrap text-white/10"
+                style={{
+                  left: c.x, top: c.y,
+                  transform: `rotate(${c.r}deg) scale(${c.s})`,
+                  fontSize: `clamp(${1.2 + i * 0.2}rem, ${3 + i * 0.5}vw, ${2.5 + i * 0.3}rem)`,
+                  opacity: 0.06 + (i % 3) * 0.03,
+                  textShadow: '0 0 30px rgba(57,255,20,0.05)',
+                }}
+              >
+                {lang === 'ro' ? 'NU VREM' : lang === 'es' ? 'NO QUEREMOS' : 'WE DON\'T WANT'} {c.name}
+              </div>
+            ))}
+          </div>
           <div className="absolute top-0 left-0 w-full h-32 z-10" style={{ background: 'linear-gradient(to bottom, transparent, #1a1a1e)' }}></div>
           <div className="absolute bottom-0 left-0 w-full h-40 z-10" style={{ background: 'linear-gradient(to top, #000, transparent)' }}></div>
           <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)`, backgroundSize: '32px 32px' }}></div>
