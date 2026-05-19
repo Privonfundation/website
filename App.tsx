@@ -56,7 +56,7 @@ const App: React.FC = () => {
   const [activeArticles, setActiveArticles] = useState<Set<number>>(new Set());
   const [progressHeight, setProgressHeight] = useState(0);
   const [verseStage, setVerseStage] = useState<'verses' | 'third'>('verses');
-  const [connectionHeight, setConnectionHeight] = useState(0);
+  const [frameProgress, setFrameProgress] = useState(0);
 
   const heroRef = useRef<HTMLDivElement>(null);
   const parallaxBgRef = useRef<HTMLDivElement>(null);
@@ -107,21 +107,14 @@ const App: React.FC = () => {
         }
       }
 
-      // Connection line: header → preamble → first article
-      if (sectionVisionRef.current && articlesContainerRef.current) {
+      // Frame drawing progress (0 to 1)
+      if (sectionVisionRef.current) {
         const sRect = sectionVisionRef.current.getBoundingClientRect();
-        const topLine = sRect.top + window.scrollY;
-        const articlesTop = articlesContainerRef.current.getBoundingClientRect().top + window.scrollY;
-        
-        const totalPath = articlesTop - topLine - 80;
-        const scrollTrigger = window.scrollY + (window.innerHeight * 0.5);
-        const currentPos = scrollTrigger - topLine - 80;
-        
-        if (currentPos > 0) {
-          setConnectionHeight(Math.min(currentPos, totalPath));
-        } else {
-          setConnectionHeight(0);
-        }
+        const sectionTop = sRect.top + window.scrollY;
+        const sectionHeight = sRect.height;
+        const scrollTrigger = window.scrollY + (window.innerHeight * 0.45);
+        const progress = (scrollTrigger - sectionTop) / sectionHeight;
+        setFrameProgress(Math.max(0, Math.min(progress, 1)));
       }
 
       if (parallaxBgRef.current) {
@@ -316,27 +309,33 @@ const App: React.FC = () => {
           <div className="absolute top-0 left-0 w-full h-32 z-10" style={{ background: 'linear-gradient(to bottom, transparent, #1a1a1e)' }}></div>
           <div className="absolute bottom-0 left-0 w-full h-40 z-10" style={{ background: 'linear-gradient(to top, #000, transparent)' }}></div>
           <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)`, backgroundSize: '32px 32px' }}></div>
-          <div className={`absolute top-0 left-0 right-0 h-px transition-all duration-1000 z-10 ${connectionHeight > 0 ? 'bg-[#39FF14] shadow-[0_0_10px_#39FF14]' : 'bg-gradient-to-r from-transparent via-white/10 to-transparent'}`}></div>
+          <div className={`absolute top-0 left-0 right-0 h-px transition-all duration-1000 z-10 ${frameProgress > 0 ? 'bg-[#39FF14] shadow-[0_0_10px_#39FF14]' : 'bg-gradient-to-r from-transparent via-white/10 to-transparent'}`}></div>
           <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-white/5 via-transparent to-transparent"></div>
           <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-white/5 via-transparent to-transparent"></div>
           <div className="absolute top-20 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
         </div>
         <div className="max-w-7xl mx-auto px-6 relative">
           
-          {/* Vertical connection line */}
-          <div 
-            className="absolute left-[24px] z-20 pointer-events-none transition-opacity duration-500"
-            style={{ 
-              top: '0px',
-              height: connectionHeight,
-              width: '2px',
-              backgroundColor: '#39FF14',
-              boxShadow: '0 0 15px #39FF14, 0 0 30px rgba(57,255,20,0.5)',
-              opacity: connectionHeight > 5 ? 1 : 0
-            }}
-          >
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-10 bg-gradient-to-t from-[#39FF14] to-transparent blur-[2px]"></div>
-          </div>
+          {/* Drawing frame — SVG rectangle that traces the section perimeter */}
+          {sectionVisionRef.current && (() => {
+            const rect = sectionVisionRef.current.getBoundingClientRect();
+            const inset = window.innerWidth < 768 ? 8 : 24;
+            const w = rect.width - inset * 2;
+            const h = rect.height - inset * 2;
+            const perim = 2 * (w + h);
+            const drawn = frameProgress * perim;
+            const d = `M ${inset} ${inset} L ${inset} ${inset + h} L ${inset + w} ${inset + h} L ${inset + w} ${inset} L ${inset} ${inset}`;
+            return (
+              <svg className="absolute inset-0 w-full h-full pointer-events-none z-20" style={{ filter: 'drop-shadow(0 0 8px rgba(57,255,20,0.3))' }}>
+                <path d={d} fill="none" stroke="#39FF14" strokeWidth={1.5}
+                  strokeDasharray={perim} strokeDashoffset={perim - drawn}
+                  strokeLinecap="square"
+                  style={{ transition: 'stroke-dashoffset 0.06s linear' }}
+                />
+              </svg>
+            );
+          })()}
+
           <div 
             className="absolute left-[24px] md:left-[24px] z-30 pointer-events-none"
             style={{ 
