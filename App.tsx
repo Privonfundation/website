@@ -20,35 +20,28 @@ const renderHighlighted = (text: string, className = '') => {
   );
 };
 
-const ArticleCard = memo(({ art, isSelected, onClick }: { art: any, isSelected: boolean, onClick: () => void }) => (
-  <button
-    onClick={onClick}
-    className={`flex-shrink-0 flex flex-col items-start gap-1.5 px-4 md:px-6 py-3 md:py-4 rounded-xl border transition-all duration-300 text-left min-w-[170px] md:min-w-[230px] ${
-      isSelected
-        ? 'border-[#39FF14]/50 bg-[#39FF14]/[0.06] shadow-[0_0_20px_rgba(57,255,20,0.06)]'
-        : 'border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04]'
-    }`}
-  >
-    <div className="flex items-center gap-2">
-      <span className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-        isSelected ? 'bg-[#39FF14] shadow-[0_0_8px_#39FF14]' : 'bg-white/20'
-      }`} />
+const ArticleCard = memo(({ art }: { art: any }) => (
+  <div className="flex-shrink-0 flex flex-col justify-between gap-1.5 px-3 md:px-5 py-2.5 md:py-3 rounded-xl border border-white/10 bg-white/[0.02] min-w-[200px] md:min-w-[270px] max-w-[200px] md:max-w-[270px] h-[72px] md:h-[82px]">
+    <div className="flex items-center gap-1.5">
+      <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14]/60 flex-shrink-0"></span>
       <span className="text-[7px] font-mono text-white/25 tracking-wider">{art.id}</span>
+      <span className="text-xs md:text-sm font-bold text-white/80 truncate leading-tight">{art.title}</span>
     </div>
-    <span className="text-xs md:text-sm font-bold text-white/70 whitespace-nowrap leading-tight">{art.title}</span>
+    <p className="text-[9px] md:text-[10px] font-mono text-white/40 leading-tight line-clamp-1 text-ellipsis overflow-hidden">
+      {art.desc}
+    </p>
     <div className="flex items-center gap-1.5">
       <span className="text-[6px] md:text-[7px] font-mono text-white/20 uppercase tracking-[0.2em]">{art.pilar}</span>
-      <span className="text-[6px] text-white/10">·</span>
+      <span className="text-[5px] text-white/10">·</span>
       <span className="text-[6px] md:text-[7px] font-mono text-white/15">{art.status}</span>
     </div>
-  </button>
+  </div>
 ));
 
 const App: React.FC = () => {
   const [active, setActive] = useState(false);
   const [lang, setLang] = useState<'ro' | 'en' | 'es'>('en');
   const [verseStage, setVerseStage] = useState<'verses' | 'third'>('verses');
-  const [selectedArticle, setSelectedArticle] = useState<number | null>(null);
 
   const heroRef = useRef<HTMLDivElement>(null);
   const parallaxBgRef = useRef<HTMLDivElement>(null);
@@ -56,6 +49,7 @@ const App: React.FC = () => {
   const t = TRANSLATIONS[lang];
   const articles = PROTOCOL_ARTICLES[lang];
   const pillars = [...new Set(articles.map((a: any) => a.pilar))];
+  const mid = Math.ceil(articles.length / 2);
 
   useEffect(() => {
     const timer = requestAnimationFrame(() => setActive(true));
@@ -319,36 +313,20 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            <div className="group relative overflow-hidden rounded-xl border border-white/5 bg-black/40">
-              <div className="animate-scroll-ticker group-hover:[animation-play-state:paused] flex gap-3 md:gap-4 py-3 md:py-4 px-2">
-                {[...articles, ...articles].map((art: any, i: number) => {
-                  const realIndex = i >= articles.length ? i - articles.length : i;
-                  return (
-                    <ArticleCard
-                      key={`${art.id}-${i}`}
-                      art={art}
-                      isSelected={selectedArticle === realIndex}
-                      onClick={() => setSelectedArticle(selectedArticle === realIndex ? null : realIndex)}
-                    />
-                  );
-                })}
+            <div className="group relative overflow-hidden rounded-xl border border-white/5 bg-black/40 pt-2 md:pt-3 px-2">
+              <div className="animate-scroll-ticker flex gap-2 md:gap-3 pb-2 md:pb-3">
+                {[...articles.slice(0, mid), ...articles.slice(0, mid)].map((art: any, i: number) => (
+                  <ArticleCard key={`r1-${art.id}-${i}`} art={art} />
+                ))}
+              </div>
+              <div className="animate-scroll-ticker-reverse flex gap-2 md:gap-3 pb-2 md:pb-3">
+                {[...articles.slice(mid), ...articles.slice(mid)].map((art: any, i: number) => (
+                  <ArticleCard key={`r2-${art.id}-${i}`} art={art} />
+                ))}
               </div>
               <div className="absolute inset-y-0 left-0 w-16 md:w-24 bg-gradient-to-r from-[#1a1a1e] to-transparent pointer-events-none z-10"></div>
               <div className="absolute inset-y-0 right-0 w-16 md:w-24 bg-gradient-to-r from-transparent to-[#1a1a1e] pointer-events-none z-10"></div>
             </div>
-
-            {selectedArticle !== null && (
-              <div className="mt-4 p-4 md:p-6 rounded-xl border border-[#39FF14]/20 bg-[#39FF14]/[0.02] animate-fadeIn">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14] shadow-[0_0_8px_#39FF14]"></span>
-                  <span className="text-[9px] font-mono text-[#39FF14] uppercase tracking-[0.3em] font-bold">{articles[selectedArticle].id}</span>
-                  <span className="text-[8px] font-mono text-white/20 tracking-[0.2em]">{articles[selectedArticle].pilar}</span>
-                </div>
-                <p className="text-xs md:text-sm font-mono text-white/60 leading-relaxed">
-                  {articles[selectedArticle].desc}
-                </p>
-              </div>
-            )}
           </div>
         </div>
       </section>

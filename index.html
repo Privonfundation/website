@@ -232,11 +232,20 @@
         0% { transform: translateX(0); }
         100% { transform: translateX(-50%); }
       }
+      @keyframes scroll-ticker-reverse {
+        0% { transform: translateX(-50%); }
+        100% { transform: translateX(0); }
+      }
       .animate-scroll-ticker {
-        animation: scroll-ticker 40s linear infinite;
+        animation: scroll-ticker 25s linear infinite;
         will-change: transform;
       }
-      .animate-scroll-ticker-paused {
+      .animate-scroll-ticker-reverse {
+        animation: scroll-ticker-reverse 25s linear infinite;
+        will-change: transform;
+      }
+      .group:hover .animate-scroll-ticker,
+      .group:hover .animate-scroll-ticker-reverse {
         animation-play-state: paused;
       }
     </style>
