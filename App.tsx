@@ -292,7 +292,12 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      <section id="vision" className="py-32 md:py-64 bg-[#050505] relative overflow-hidden border-t border-white/5 section-content-visibility">
+      <div className="relative h-px w-full overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+        <div className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-[#39FF14]/40 to-transparent"></div>
+      </div>
+
+      <section id="vision" className="py-32 md:py-64 bg-[#050505] relative overflow-hidden section-content-visibility">
         <div className="max-w-7xl mx-auto px-6 relative">
           
           <div 
