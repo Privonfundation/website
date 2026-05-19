@@ -8,6 +8,17 @@ import { CyberVault } from './components/CyberVault';
 import { TRANSLATIONS, PROTOCOL_ARTICLES } from './constants';
 import { KeepAndroidOpen } from './components/KeepAndroidOpen';
 
+const renderHighlighted = (text: string, className = '') => {
+  const parts = text.split('|');
+  if (parts.length === 1) return <span className={className}>{text}</span>;
+  return (
+    <span className={className}>
+      <span className="text-[#39FF14]">{parts[0]}</span>
+      <span>{parts[1]}</span>
+    </span>
+  );
+};
+
 const ArticleItem = memo(({ art, isActive }: { art: any, isActive: boolean }) => (
   <div className={`reveal-text group relative flex flex-col md:flex-row items-stretch transition-all duration-700 gpu-layer overflow-hidden border-b border-white/5 last:border-0 pl-1 md:pl-0 ${isActive ? 'bg-[#39FF14]/[0.04] active' : 'bg-black'}`}>
     <div className="hidden md:flex flex-col items-center justify-between py-8 w-24 border-r border-white/5 group-hover:border-[#39FF14]/30 transition-colors relative">
@@ -195,32 +206,32 @@ const App: React.FC = () => {
           </div>
 
           <div className="group/verses flex flex-col md:flex-row md:items-start md:justify-center gap-8 md:gap-0">
-            <div className="relative z-20 md:w-1/2 md:flex-shrink-0 transition-transform duration-700 ease-out md:group-hover/verses:-translate-x-[12%]">
+            <div className="relative z-20 md:w-1/2 md:flex-shrink-0 transition-transform duration-700 ease-out md:group-hover/verses:-translate-x-[18%]">
               <div className="animate-verse-float md:animate-verse-float">
                 <div className="bg-black/40 backdrop-blur-lg border border-[#39FF14]/30 rounded-2xl p-8 md:p-12 shadow-[0_0_60px_rgba(57,255,20,0.15)] md:mr-[-20%]">
-                  <blockquote>
-                    <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white break-words">
-                      „{t.VERSE_1}"
-                    </p>
-                    <cite className="block mt-8 text-[#39FF14] font-mono text-sm tracking-[0.4em] uppercase not-italic">
-                      — {t.VERSE_1_REF}
-                    </cite>
-                  </blockquote>
+                <blockquote>
+                  <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white break-words">
+                    „{renderHighlighted(t.VERSE_1)}"
+                  </p>
+                  <cite className="block mt-8 text-white/70 font-mono text-sm tracking-[0.4em] uppercase not-italic">
+                    — {renderHighlighted(t.VERSE_1_REF)}
+                  </cite>
+                </blockquote>
                 </div>
               </div>
             </div>
 
-            <div className="relative z-10 md:w-1/2 md:flex-shrink-0 md:mt-16 transition-transform duration-700 ease-out md:group-hover/verses:translate-x-[12%]">
+            <div className="relative z-10 md:w-1/2 md:flex-shrink-0 md:mt-16 transition-transform duration-700 ease-out md:group-hover/verses:translate-x-[18%]">
               <div className="animate-verse-float-reverse md:animate-verse-float-reverse">
                 <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 md:p-12 shadow-lg md:ml-[-20%]">
-                  <blockquote>
-                    <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white/90 break-words">
-                      „{t.VERSE_2}"
-                    </p>
-                    <cite className="block mt-8 text-[#39FF14]/70 font-mono text-sm tracking-[0.4em] uppercase not-italic">
-                      — {t.VERSE_2_REF}
-                    </cite>
-                  </blockquote>
+                <blockquote>
+                  <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white/90 break-words">
+                    „{renderHighlighted(t.VERSE_2)}"
+                  </p>
+                  <cite className="block mt-8 text-white/50 font-mono text-sm tracking-[0.4em] uppercase not-italic">
+                    — {renderHighlighted(t.VERSE_2_REF)}
+                  </cite>
+                </blockquote>
                 </div>
               </div>
             </div>
