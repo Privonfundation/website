@@ -292,12 +292,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      <div className="relative h-px w-full overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-        <div className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-[#39FF14]/40 to-transparent"></div>
-      </div>
-
-      <section id="vision" className="py-32 md:py-64 bg-[#050505] relative overflow-hidden section-content-visibility">
+      <section id="vision" className="py-32 md:py-64 bg-[#050505] relative overflow-hidden border-t border-white/5 section-content-visibility">
         <div className="max-w-7xl mx-auto px-6 relative">
           
           <div 
@@ -316,8 +311,8 @@ const App: React.FC = () => {
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#39FF14] rounded-full blur-md animate-pulse"></div>
           </div>
 
-          <div className="mb-24 reveal-text">
-            <div className="flex items-center gap-4 mb-10">
+          <div className="mb-8 reveal-text">
+            <div className="flex items-center gap-4 mb-6">
                <div className="h-px w-16 bg-[#39FF14]"></div>
                <span className="text-[#39FF14] font-mono text-xs uppercase tracking-[0.6em] font-bold">{t.THE_STANDARD}</span>
             </div>
