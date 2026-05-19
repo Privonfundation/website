@@ -230,19 +230,11 @@
 
       @keyframes scroll-ticker {
         0% { transform: translateX(0); }
-        100% { transform: translateX(-33.333%); }
+        100% { transform: translateX(-50%); }
       }
       @keyframes scroll-ticker-reverse {
         0% { transform: translateX(-50%); }
         100% { transform: translateX(0); }
-      }
-      .article-scroll-track {
-        display: flex;
-        animation: scroll-ticker 5s linear infinite;
-        will-change: transform;
-      }
-      .article-scroll-track:hover {
-        animation-play-state: paused;
       }
     </style>
 <script type="importmap">

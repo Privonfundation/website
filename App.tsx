@@ -53,6 +53,35 @@ const App: React.FC = () => {
   const t = TRANSLATIONS[lang];
   const articles = PROTOCOL_ARTICLES[lang];
   const pillars = [...new Set(articles.map((a: any) => a.pilar))];
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    let pos = 0;
+    let raf: number;
+    let setWidth = 0;
+
+    const measure = () => {
+      const isMobile = window.innerWidth < 768;
+      const gap = isMobile ? 12 : 16;
+      let w = 0;
+      for (let i = 0; i < el.children.length; i++) {
+        w += (el.children[i] as HTMLElement).offsetWidth + gap;
+      }
+      setWidth = w;
+    };
+    measure();
+
+    const animate = () => {
+      pos += 2;
+      if (pos >= setWidth) pos = 0;
+      el.style.transform = `translateX(${-pos}px)`;
+      raf = requestAnimationFrame(animate);
+    };
+    raf = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   useEffect(() => {
     const timer = requestAnimationFrame(() => setActive(true));
@@ -331,13 +360,13 @@ const App: React.FC = () => {
           </div>
 
           <div className="relative">
-            <div className="flex gap-3 md:gap-4 pb-4 article-scroll-track">
-              {[...articles, ...articles, ...articles].map((art: any, i: number) => (
-                <ArticleCard key={`${art.id}-${i}`} art={art} />
+            <div ref={scrollRef} className="flex gap-3 md:gap-4 pb-4" style={{ transform: 'translateX(0)' }}>
+              {articles.map((art: any, i: number) => (
+                <ArticleCard key={art.id} art={art} />
               ))}
             </div>
-            <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-[#0a0a0a] to-transparent pointer-events-none z-10" />
-            <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-r from-transparent to-[#0a0a0a] pointer-events-none z-10" />
+            <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-[#0a0a0a] to-transparent pointer-events-none z-10" />
+            <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none z-10" />
           </div>
         </div>
       </section>
