@@ -56,11 +56,16 @@ const App: React.FC = () => {
   const [activeArticles, setActiveArticles] = useState<Set<number>>(new Set());
   const [progressHeight, setProgressHeight] = useState(0);
   const [verseStage, setVerseStage] = useState<'verses' | 'third'>('verses');
+  const [connectionHeight, setConnectionHeight] = useState(0);
+  const [preambleFaded, setPreambleFaded] = useState(false);
+  const preambleFadedRef = useRef(false);
 
   const heroRef = useRef<HTMLDivElement>(null);
   const parallaxBgRef = useRef<HTMLDivElement>(null);
   const protocolCardRef = useRef<HTMLDivElement>(null);
   const articlesContainerRef = useRef<HTMLDivElement>(null);
+  const sectionVisionRef = useRef<HTMLDivElement>(null);
+  const preambleRef = useRef<HTMLDivElement>(null);
 
   const t = TRANSLATIONS[lang];
   const articles = PROTOCOL_ARTICLES[lang];
@@ -102,6 +107,35 @@ const App: React.FC = () => {
           setProgressHeight(Math.min(currentProgress, totalLength));
         } else {
           setProgressHeight(0);
+        }
+      }
+
+      // Connection line: header → preamble → first article
+      if (sectionVisionRef.current && articlesContainerRef.current) {
+        const sRect = sectionVisionRef.current.getBoundingClientRect();
+        const topLine = sRect.top + window.scrollY; // top-0 line
+        const preambleTop = preambleRef.current
+          ? preambleRef.current.getBoundingClientRect().top + window.scrollY
+          : topLine + 300;
+        const articlesTop = articlesContainerRef.current.getBoundingClientRect().top + window.scrollY;
+        
+        const totalPath = articlesTop - topLine - 80;
+        const scrollTrigger = window.scrollY + (window.innerHeight * 0.5);
+        const currentPos = scrollTrigger - topLine - 80;
+        
+        if (currentPos > 0) {
+          const newHeight = Math.min(currentPos, totalPath);
+          setConnectionHeight(newHeight);
+          
+          if (!preambleFadedRef.current && preambleRef.current) {
+            const pRect = preambleRef.current.getBoundingClientRect();
+            if (pRect.top + pRect.height < scrollTrigger) {
+              preambleFadedRef.current = true;
+              setPreambleFaded(true);
+            }
+          }
+        } else {
+          setConnectionHeight(0);
         }
       }
 
@@ -292,18 +326,32 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      <section id="vision" className="py-32 md:py-64 relative overflow-hidden section-content-visibility" style={{ background: '#1a1a1e' }}>
+      <section ref={sectionVisionRef} id="vision" className="py-32 md:py-64 relative overflow-hidden section-content-visibility" style={{ background: '#1a1a1e' }}>
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-32 z-10" style={{ background: 'linear-gradient(to bottom, transparent, #1a1a1e)' }}></div>
           <div className="absolute bottom-0 left-0 w-full h-40 z-10" style={{ background: 'linear-gradient(to top, #000, transparent)' }}></div>
           <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)`, backgroundSize: '32px 32px' }}></div>
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+          <div className={`absolute top-0 left-0 right-0 h-px transition-all duration-1000 z-10 ${connectionHeight > 0 ? 'bg-[#39FF14] shadow-[0_0_10px_#39FF14]' : 'bg-gradient-to-r from-transparent via-white/10 to-transparent'}`}></div>
           <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-white/5 via-transparent to-transparent"></div>
           <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-white/5 via-transparent to-transparent"></div>
           <div className="absolute top-20 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
         </div>
         <div className="max-w-7xl mx-auto px-6 relative">
           
+          {/* Vertical connection line */}
+          <div 
+            className="absolute left-[24px] z-20 pointer-events-none transition-opacity duration-500"
+            style={{ 
+              top: '0px',
+              height: connectionHeight,
+              width: '2px',
+              backgroundColor: '#39FF14',
+              boxShadow: '0 0 15px #39FF14, 0 0 30px rgba(57,255,20,0.5)',
+              opacity: connectionHeight > 5 ? 1 : 0
+            }}
+          >
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-10 bg-gradient-to-t from-[#39FF14] to-transparent blur-[2px]"></div>
+          </div>
           <div 
             className="absolute left-[24px] md:left-[24px] z-30 pointer-events-none"
             style={{ 
@@ -336,7 +384,7 @@ const App: React.FC = () => {
             </h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-32">
-              <div className="flex flex-col gap-8">
+              <div ref={preambleRef} className={`flex flex-col gap-8 transition-all duration-700 ${preambleFaded ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}>
                 <span className="text-[#39FF14] font-mono text-[10px] uppercase tracking-[0.4em] font-bold">{t.PREAMBLE_LABEL}</span>
                 <p className="text-lg md:text-xl font-mono text-white/60 leading-relaxed border-l-2 border-[#39FF14]/40 pl-8">
                   {t.PREAMBLE_TEXT}
