@@ -57,15 +57,12 @@ const App: React.FC = () => {
   const [progressHeight, setProgressHeight] = useState(0);
   const [verseStage, setVerseStage] = useState<'verses' | 'third'>('verses');
   const [connectionHeight, setConnectionHeight] = useState(0);
-  const [preambleFaded, setPreambleFaded] = useState(false);
-  const preambleFadedRef = useRef(false);
 
   const heroRef = useRef<HTMLDivElement>(null);
   const parallaxBgRef = useRef<HTMLDivElement>(null);
   const protocolCardRef = useRef<HTMLDivElement>(null);
   const articlesContainerRef = useRef<HTMLDivElement>(null);
   const sectionVisionRef = useRef<HTMLDivElement>(null);
-  const preambleRef = useRef<HTMLDivElement>(null);
 
   const t = TRANSLATIONS[lang];
   const articles = PROTOCOL_ARTICLES[lang];
@@ -113,10 +110,7 @@ const App: React.FC = () => {
       // Connection line: header → preamble → first article
       if (sectionVisionRef.current && articlesContainerRef.current) {
         const sRect = sectionVisionRef.current.getBoundingClientRect();
-        const topLine = sRect.top + window.scrollY; // top-0 line
-        const preambleTop = preambleRef.current
-          ? preambleRef.current.getBoundingClientRect().top + window.scrollY
-          : topLine + 300;
+        const topLine = sRect.top + window.scrollY;
         const articlesTop = articlesContainerRef.current.getBoundingClientRect().top + window.scrollY;
         
         const totalPath = articlesTop - topLine - 80;
@@ -124,16 +118,7 @@ const App: React.FC = () => {
         const currentPos = scrollTrigger - topLine - 80;
         
         if (currentPos > 0) {
-          const newHeight = Math.min(currentPos, totalPath);
-          setConnectionHeight(newHeight);
-          
-          if (!preambleFadedRef.current && preambleRef.current) {
-            const pRect = preambleRef.current.getBoundingClientRect();
-            if (pRect.top + pRect.height < scrollTrigger) {
-              preambleFadedRef.current = true;
-              setPreambleFaded(true);
-            }
-          }
+          setConnectionHeight(Math.min(currentPos, totalPath));
         } else {
           setConnectionHeight(0);
         }
@@ -384,7 +369,7 @@ const App: React.FC = () => {
             </h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-32">
-              <div ref={preambleRef} className={`flex flex-col gap-8 transition-all duration-700 ${preambleFaded ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}>
+              <div className="flex flex-col gap-8">
                 <span className="text-[#39FF14] font-mono text-[10px] uppercase tracking-[0.4em] font-bold">{t.PREAMBLE_LABEL}</span>
                 <p className="text-lg md:text-xl font-mono text-white/60 leading-relaxed border-l-2 border-[#39FF14]/40 pl-8">
                   {t.PREAMBLE_TEXT}
