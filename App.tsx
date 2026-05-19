@@ -187,38 +187,38 @@ const App: React.FC = () => {
           <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black to-transparent z-10"></div>
         </div>
 
-        <div className="relative z-20 max-w-5xl mx-auto px-6 text-center">
-          <div className="flex items-center justify-center gap-4 mb-8">
+        <div className="relative z-20 max-w-6xl mx-auto px-6">
+          <div className="flex items-center justify-center gap-4 mb-16">
             <div className="h-[1px] w-16 bg-[#39FF14]"></div>
             <span className="text-[#39FF14] font-mono text-[10px] uppercase tracking-[0.5em] font-bold">{t.VERSE_LABEL}</span>
             <div className="h-[1px] w-16 bg-[#39FF14]"></div>
           </div>
 
-          <div className="flex flex-col gap-16 md:gap-20">
-            <div className="group relative">
-              <div className="absolute -inset-4 bg-[#39FF14]/[0.03] rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              <blockquote className="relative">
-                <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white break-words">
-                  „{t.VERSE_1}"
-                </p>
-                <cite className="block mt-8 text-[#39FF14] font-mono text-sm tracking-[0.4em] uppercase not-italic">
-                  — {t.VERSE_1_REF}
-                </cite>
-              </blockquote>
+          <div className="flex flex-col md:flex-row md:items-start md:justify-center gap-8 md:gap-0">
+            <div className="relative z-20 md:w-1/2 md:flex-shrink-0">
+              <div className="bg-black/40 backdrop-blur-lg border border-[#39FF14]/30 rounded-2xl p-8 md:p-12 shadow-[0_0_60px_rgba(57,255,20,0.15)] md:mr-[-20%]">
+                <blockquote>
+                  <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white break-words">
+                    „{t.VERSE_1}"
+                  </p>
+                  <cite className="block mt-8 text-[#39FF14] font-mono text-sm tracking-[0.4em] uppercase not-italic">
+                    — {t.VERSE_1_REF}
+                  </cite>
+                </blockquote>
+              </div>
             </div>
 
-            <div className="w-24 h-[1px] bg-white/10 mx-auto"></div>
-
-            <div className="group relative">
-              <div className="absolute -inset-4 bg-[#39FF14]/[0.03] rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              <blockquote className="relative">
-                <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white break-words">
-                  „{t.VERSE_2}"
-                </p>
-                <cite className="block mt-8 text-[#39FF14] font-mono text-sm tracking-[0.4em] uppercase not-italic">
-                  — {t.VERSE_2_REF}
-                </cite>
-              </blockquote>
+            <div className="relative z-10 md:w-1/2 md:flex-shrink-0 md:mt-16">
+              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 md:p-12 shadow-lg md:ml-[-20%]">
+                <blockquote>
+                  <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white/90 break-words">
+                    „{t.VERSE_2}"
+                  </p>
+                  <cite className="block mt-8 text-[#39FF14]/70 font-mono text-sm tracking-[0.4em] uppercase not-italic">
+                    — {t.VERSE_2_REF}
+                  </cite>
+                </blockquote>
+              </div>
             </div>
           </div>
         </div>
