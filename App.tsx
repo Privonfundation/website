@@ -196,6 +196,7 @@ const App: React.FC = () => {
           <div className="absolute inset-0 bg-blueprint opacity-5"></div>
           <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black to-transparent z-10"></div>
           <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black to-transparent z-10"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-white/10 blur-[120px] opacity-30"></div>
         </div>
 
         <div className="relative z-20 max-w-6xl mx-auto px-6">
