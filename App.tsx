@@ -150,6 +150,16 @@ const App: React.FC = () => {
               {lang === 'ro' ? 'Cod Sursă' : lang === 'es' ? 'Código Fuente' : 'Source Code'}
             </a>
           </div>
+
+          <div className="reveal-text flex items-center gap-6 md:gap-10 text-white/15 font-mono text-[8px] md:text-[9px] uppercase tracking-[0.3em] pointer-events-auto" style={{ transitionDelay: '1.1s' }}>
+            <span>Zero-Trust</span>
+            <span className="w-3 h-[1px] bg-white/20" />
+            <span>Audited</span>
+            <span className="w-3 h-[1px] bg-white/20" />
+            <span>Sovereign</span>
+            <span className="w-3 h-[1px] bg-white/20" />
+            <span>Open Source</span>
+          </div>
         </div>
       </section>
 
