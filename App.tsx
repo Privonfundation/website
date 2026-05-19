@@ -20,52 +20,43 @@ const renderHighlighted = (text: string, className = '') => {
   );
 };
 
-const ArticleItem = memo(({ art, isActive }: { art: any, isActive: boolean }) => (
-  <div className={`reveal-text group relative flex flex-col md:flex-row items-stretch transition-all duration-700 gpu-layer overflow-hidden border-b border-white/5 last:border-0 pl-1 md:pl-0 ${isActive ? 'bg-[#39FF14]/[0.04] active' : 'bg-black'}`}>
-    <div className="hidden md:flex flex-col items-center justify-between py-8 w-24 border-r border-white/5 group-hover:border-[#39FF14]/30 transition-colors relative">
-       <span className={`text-[10px] font-mono transition-colors ${isActive ? 'text-[#39FF14]' : 'text-white/20 group-hover:text-[#39FF14]'}`}>{art.id}</span>
-       <div className={`w-[1px] h-full my-4 transition-colors ${isActive ? 'bg-[#39FF14]/40' : 'bg-white/5 group-hover:bg-[#39FF14]/20'}`}></div>
+const ArticleItemCompact = memo(({ art, isExpanded, onToggle }: { art: any, isExpanded: boolean, onToggle: () => void }) => (
+  <div className={`border-b border-white/5 last:border-0 cursor-pointer transition-all duration-300 ${isExpanded ? 'bg-[#39FF14]/[0.04]' : 'hover:bg-white/[0.02]'}`} onClick={onToggle}>
+    <div className="flex items-center gap-3 md:gap-5 px-4 md:px-8 py-3.5 md:py-5">
+      <div className={`w-2 h-2 rounded-full flex-shrink-0 transition-all duration-300 ${isExpanded ? 'bg-[#39FF14] shadow-[0_0_10px_#39FF14]' : 'bg-white/10'}`} />
+      <span className="text-[9px] md:text-[10px] font-mono text-white/25 w-14 md:w-16 flex-shrink-0">{art.id}</span>
+      <span className={`text-xs md:text-base font-bold flex-1 leading-tight transition-colors ${isExpanded ? 'text-[#39FF14]' : 'text-white/70'}`}>
+        {art.title}
+      </span>
+      <span className="hidden md:inline text-[8px] font-mono text-white/20 px-3 py-1 rounded-full bg-white/5 border border-white/5">{art.pilar}</span>
+      <span className={`text-[8px] font-mono uppercase tracking-[0.15em] px-2 py-1 rounded-full flex-shrink-0 ${isExpanded ? 'text-[#39FF14] bg-[#39FF14]/10' : 'text-white/20 bg-white/5'}`}>{art.status}</span>
+      <i className={`fa-solid fa-chevron-down text-[10px] text-white/20 transition-transform duration-300 flex-shrink-0 ${isExpanded ? 'rotate-180' : ''}`}></i>
     </div>
-
-    <div className="flex-1 p-8 md:p-12">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
-         <div className="flex flex-col gap-2">
-            <span className="text-[9px] font-mono text-[#39FF14] uppercase tracking-[0.4em] font-bold">{art.pilar}</span>
-            <h4 className={`text-2xl md:text-4xl font-black uppercase tracking-tight transition-colors duration-500 ${isActive ? 'text-[#39FF14]' : 'text-white group-hover:text-[#39FF14]'}`}>
-              {art.title}
-            </h4>
-         </div>
-         <div className="flex items-center gap-4">
-            <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all ${isActive ? 'border-[#39FF14]/60 bg-[#39FF14]/10' : 'border-white/5 group-hover:border-[#39FF14]/40'}`}>
-               <div className={`w-1.5 h-1.5 rounded-full transition-colors ${isActive ? 'bg-[#39FF14] shadow-[0_0_10px_#39FF14]' : 'bg-white/10 group-hover:bg-[#39FF14] group-hover:animate-pulse'}`}></div>
-            </div>
-         </div>
-      </div>
-      <p className={`text-sm md:text-lg leading-relaxed max-w-4xl transition-colors ${isActive ? 'text-white' : 'text-white/40 group-hover:text-white/70'}`}>
+    <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}>
+      <p className="text-[11px] md:text-sm text-white/50 font-mono leading-relaxed px-4 md:px-8 pb-4 md:pb-6 border-l-2 border-[#39FF14]/30 ml-[3.25rem] md:ml-[4.5rem] pl-4">
         {art.desc}
       </p>
     </div>
-
-    <div className={`absolute left-0 top-0 w-[2px] md:w-[4px] transition-all duration-700 ${isActive ? 'h-full bg-[#39FF14] shadow-[0_0_15px_#39FF14]' : 'h-0 bg-[#39FF14] group-hover:h-full opacity-30'}`}></div>
   </div>
 ));
 
 const App: React.FC = () => {
   const [active, setActive] = useState(false);
   const [lang, setLang] = useState<'ro' | 'en' | 'es'>('en');
-  const [activeArticles, setActiveArticles] = useState<Set<number>>(new Set());
-  const [progressHeight, setProgressHeight] = useState(0);
   const [verseStage, setVerseStage] = useState<'verses' | 'third'>('verses');
-  const [frameProgress, setFrameProgress] = useState(0);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const heroRef = useRef<HTMLDivElement>(null);
   const parallaxBgRef = useRef<HTMLDivElement>(null);
-  const protocolCardRef = useRef<HTMLDivElement>(null);
-  const articlesContainerRef = useRef<HTMLDivElement>(null);
-  const sectionVisionRef = useRef<HTMLDivElement>(null);
 
   const t = TRANSLATIONS[lang];
   const articles = PROTOCOL_ARTICLES[lang];
+
+  const toggleArticle = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
+  const pillars = [...new Set(articles.map((a: any) => a.pilar))];
 
   useEffect(() => {
     const timer = requestAnimationFrame(() => setActive(true));
@@ -77,46 +68,8 @@ const App: React.FC = () => {
     }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
 
     document.querySelectorAll('.reveal-text').forEach(el => revealObserver.observe(el));
-
-    const articleObservers = articles.map((_, index) => {
-      return new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          setActiveArticles(prev => new Set(prev).add(index));
-        }
-      }, { threshold: 0.5, rootMargin: '0px 0px -20% 0px' });
-    });
-
-    const articleElements = document.querySelectorAll('.article-wrapper');
-    articleElements.forEach((el, i) => articleObservers[i]?.observe(el));
     
     const handleScroll = () => {
-      if (protocolCardRef.current && articlesContainerRef.current) {
-        const pRect = protocolCardRef.current.getBoundingClientRect();
-        const aRect = articlesContainerRef.current.getBoundingClientRect();
-        
-        const startPoint = pRect.bottom + window.scrollY;
-        const endPoint = aRect.bottom + window.scrollY;
-        const triggerY = window.scrollY + (window.innerHeight * 0.7);
-        
-        if (triggerY > startPoint) {
-          const totalLength = endPoint - startPoint;
-          const currentProgress = triggerY - startPoint;
-          setProgressHeight(Math.min(currentProgress, totalLength));
-        } else {
-          setProgressHeight(0);
-        }
-      }
-
-      // Frame drawing progress (0 to 1)
-      if (sectionVisionRef.current) {
-        const sRect = sectionVisionRef.current.getBoundingClientRect();
-        const sectionTop = sRect.top + window.scrollY;
-        const sectionHeight = sRect.height;
-        const scrollTrigger = window.scrollY + (window.innerHeight * 0.45);
-        const progress = (scrollTrigger - sectionTop) / sectionHeight;
-        setFrameProgress(Math.max(0, Math.min(progress, 1)));
-      }
-
       if (parallaxBgRef.current) {
         parallaxBgRef.current.style.transform = `translate3d(0, ${window.scrollY * 0.12}px, 0)`;
       }
@@ -127,10 +80,9 @@ const App: React.FC = () => {
     return () => {
       cancelAnimationFrame(timer);
       revealObserver.disconnect();
-      articleObservers.forEach(o => o.disconnect());
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [lang, articles.length]);
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-[#39FF14] selection:text-black overflow-x-hidden isolate">
@@ -304,100 +256,78 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      <section ref={sectionVisionRef} id="vision" className="py-32 md:py-64 relative overflow-hidden section-content-visibility" style={{ background: '#1a1a1e' }}>
+      <section id="vision" className="py-32 md:py-64 relative overflow-hidden section-content-visibility" style={{ background: '#1a1a1e' }}>
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-32 z-10" style={{ background: 'linear-gradient(to bottom, transparent, #1a1a1e)' }}></div>
           <div className="absolute bottom-0 left-0 w-full h-40 z-10" style={{ background: 'linear-gradient(to top, #000, transparent)' }}></div>
           <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)`, backgroundSize: '32px 32px' }}></div>
-          <div className={`absolute top-0 left-0 right-0 h-px transition-all duration-1000 z-10 ${frameProgress > 0 ? 'bg-[#39FF14] shadow-[0_0_10px_#39FF14]' : 'bg-gradient-to-r from-transparent via-white/10 to-transparent'}`}></div>
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
           <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-white/5 via-transparent to-transparent"></div>
           <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-white/5 via-transparent to-transparent"></div>
           <div className="absolute top-20 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
         </div>
+
         <div className="max-w-7xl mx-auto px-6 relative">
-          
-          {/* Drawing frame — SVG rectangle that traces the section perimeter */}
-          {sectionVisionRef.current && (() => {
-            const rect = sectionVisionRef.current.getBoundingClientRect();
-            const inset = window.innerWidth < 768 ? 8 : 24;
-            const w = rect.width - inset * 2;
-            const h = rect.height - inset * 2;
-            const perim = 2 * (w + h);
-            const drawn = frameProgress * perim;
-            const d = `M ${inset} ${inset} L ${inset} ${inset + h} L ${inset + w} ${inset + h} L ${inset + w} ${inset} L ${inset} ${inset}`;
-            return (
-              <svg className="absolute inset-0 w-full h-full pointer-events-none z-20" style={{ filter: 'drop-shadow(0 0 8px rgba(57,255,20,0.3))' }}>
-                <path d={d} fill="none" stroke="#39FF14" strokeWidth={1.5}
-                  strokeDasharray={perim} strokeDashoffset={perim - drawn}
-                  strokeLinecap="square"
-                  style={{ transition: 'stroke-dashoffset 0.06s linear' }}
-                />
-              </svg>
-            );
-          })()}
-
-          <div 
-            className="absolute left-[24px] md:left-[24px] z-30 pointer-events-none"
-            style={{ 
-              top: protocolCardRef.current ? protocolCardRef.current.offsetTop + protocolCardRef.current.offsetHeight : 0,
-              height: progressHeight,
-              width: '2px',
-              backgroundColor: '#39FF14',
-              boxShadow: '0 0 15px #39FF14, 0 0 30px rgba(57,255,20,0.5)',
-              transition: 'height 0.1s linear, opacity 0.3s',
-              opacity: progressHeight > 5 ? 1 : 0
-            }}
-          >
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-10 bg-gradient-to-t from-[#39FF14] to-transparent blur-[2px]"></div>
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#39FF14] rounded-full blur-md animate-pulse"></div>
-          </div>
-
-          <div className="mb-8 reveal-text">
+          <div className="reveal-text">
             <div className="flex items-center gap-4 mb-6">
-               <div className="h-px w-16 bg-[#39FF14]"></div>
-               <span className="text-[#39FF14] font-mono text-xs uppercase tracking-[0.6em] font-bold">{t.THE_STANDARD}</span>
+              <div className="h-px w-16 bg-[#39FF14]"></div>
+              <span className="text-[#39FF14] font-mono text-xs uppercase tracking-[0.6em] font-bold">{t.THE_STANDARD}</span>
             </div>
-            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-16 leading-[0.85] relative">
+
+            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-8 md:mb-12 leading-[0.85] relative">
               <span className="animate-glitch-protocol">
-                {t.PACT_TITLE.split(':')[0]}<span className="text-[#39FF14]/30">:</span>
+                Protocol 3305<span className="text-[#39FF14]/30">:</span>
               </span>
               <br/>
               <span className="text-white/10 block animate-nod mt-6 md:mt-10">
                 {t.PACT_TITLE.split(':')[1]}
               </span>
             </h2>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-32">
-              <div className="flex flex-col gap-8">
-                <span className="text-[#39FF14] font-mono text-[10px] uppercase tracking-[0.4em] font-bold">{t.PREAMBLE_LABEL}</span>
-                <p className="text-lg md:text-xl font-mono text-white/60 leading-relaxed border-l-2 border-[#39FF14]/40 pl-8">
+
+            <div className="relative mb-10 md:mb-16 p-5 md:p-10 rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden group">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#39FF14]/5 blur-[120px] rounded-full group-hover:bg-[#39FF14]/10 transition-all duration-700"></div>
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 blur-[80px] rounded-full"></div>
+              <div className="relative z-10">
+                <p className="text-sm md:text-base font-mono text-white/60 leading-relaxed mb-5">
                   {t.PREAMBLE_TEXT}
                 </p>
-              </div>
-
-              <div ref={protocolCardRef} className="bg-white/5 p-8 md:p-12 rounded-3xl border border-white/10 relative overflow-hidden group hover:border-[#39FF14]/30 transition-all duration-700">
-                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-20 transition-opacity">
-                  <Logo className="w-32 h-32" glow={false} />
-                </div>
-                <div className="relative z-10 flex flex-col gap-6 font-mono">
-                  <p className="text-sm md:text-base text-white/80 leading-relaxed">
-                    {t.PROTOCOL_DESC}
-                  </p>
-                  <p className="text-xs text-white/40 uppercase tracking-[0.2em] leading-relaxed">
-                    {t.ADHERENCE.replace('zero-knowledge', '').replace('zero-trust', '')} <span className="text-[#39FF14]">zero-knowledge</span> and <span className="text-[#39FF14]">zero-trust</span>.
-                  </p>
+                <p className="text-sm md:text-base font-mono text-white/80 leading-relaxed border-l-2 border-[#39FF14]/40 pl-5">
+                  {t.PROTOCOL_DESC}
+                </p>
+                <div className="mt-5 pt-5 border-t border-white/10 flex flex-wrap items-center gap-3">
+                  <span className="text-[9px] font-mono text-white/30 uppercase tracking-[0.15em]">
+                    {lang === 'ro' ? 'Aderență:' : lang === 'es' ? 'Adhesión:' : 'Adherence:'}
+                  </span>
+                  <span className="px-3 py-1 rounded-full bg-[#39FF14]/10 border border-[#39FF14]/30 text-[8px] font-mono text-[#39FF14] uppercase tracking-[0.3em]">Zero-Knowledge</span>
+                  <span className="px-3 py-1 rounded-full bg-[#39FF14]/10 border border-[#39FF14]/30 text-[8px] font-mono text-[#39FF14] uppercase tracking-[0.3em]">Zero-Trust</span>
                 </div>
               </div>
             </div>
 
-            <div ref={articlesContainerRef} className="flex flex-col gap-px bg-white/5 border border-white/5 overflow-hidden rounded-2xl contain-paint relative z-10">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-6 px-1">
+              <div className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-[#39FF14] shadow-[0_0_10px_#39FF14] animate-pulse"></span>
+                <span className="text-[9px] font-mono text-white/30 uppercase tracking-[0.3em]">
+                  {articles.length}/{articles.length} {lang === 'ro' ? 'Articole Active' : lang === 'es' ? 'Artículos Activos' : 'Articles Enforced'}
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {pillars.map((p: string) => (
+                  <span key={p} className="text-[7px] font-mono text-white/20 uppercase tracking-[0.2em] px-2.5 py-1 rounded-full bg-white/5 border border-white/5">
+                    {p}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-white/5 overflow-hidden bg-black/30">
               {articles.map((art: any, index: number) => (
-                <div key={art.id} className="article-wrapper">
-                  <ArticleItem 
-                    art={art} 
-                    isActive={activeArticles.has(index)}
-                  />
-                </div>
+                <ArticleItemCompact
+                  key={art.id}
+                  art={art}
+                  isExpanded={expandedIndex === index}
+                  onToggle={() => toggleArticle(index)}
+                />
               ))}
             </div>
           </div>
