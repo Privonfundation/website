@@ -208,7 +208,7 @@ const App: React.FC = () => {
           <div className="group/verses flex flex-col md:flex-row md:items-start md:justify-center gap-8 md:gap-0">
             <div className="relative z-20 md:w-1/2 md:flex-shrink-0 transition-transform duration-700 ease-out md:group-hover/verses:-translate-x-[18%]">
               <div className="animate-verse-float md:animate-verse-float">
-                 <div className="bg-black/40 backdrop-blur-lg border border-[#39FF14]/60 rounded-2xl p-8 md:p-12 shadow-[0_0_60px_rgba(57,255,20,0.15),0_0_30px_rgba(57,255,20,0.15),inset_0_0_40px_rgba(57,255,20,0.04)] md:mr-[-20%]">
+                 <div className="bg-black/40 backdrop-blur-lg border border-white/40 rounded-2xl p-8 md:p-12 shadow-[0_0_60px_rgba(255,255,255,0.08),0_0_30px_rgba(255,255,255,0.06),inset_0_0_40px_rgba(255,255,255,0.03)] md:mr-[-20%]">
                 <blockquote>
                   <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white break-words">
                     „{renderHighlighted(t.VERSE_1)}"
@@ -223,7 +223,7 @@ const App: React.FC = () => {
 
             <div className="relative z-10 md:w-1/2 md:flex-shrink-0 md:mt-16 transition-transform duration-700 ease-out md:group-hover/verses:translate-x-[18%]">
               <div className="animate-verse-float-reverse md:animate-verse-float-reverse">
-                 <div className="bg-white/5 backdrop-blur-md border border-[#39FF14]/30 rounded-2xl p-8 md:p-12 shadow-[0_0_40px_rgba(57,255,20,0.08),0_0_20px_rgba(57,255,20,0.06),inset_0_0_30px_rgba(57,255,20,0.02)] md:ml-[-20%]">
+                 <div className="bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-8 md:p-12 shadow-[0_0_40px_rgba(255,255,255,0.05),0_0_20px_rgba(255,255,255,0.03),inset_0_0_30px_rgba(255,255,255,0.02)] md:ml-[-20%]">
                 <blockquote>
                   <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white/90 break-words">
                     „{renderHighlighted(t.VERSE_2)}"
