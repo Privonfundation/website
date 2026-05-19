@@ -236,16 +236,12 @@
         0% { transform: translateX(-50%); }
         100% { transform: translateX(0); }
       }
-      .animate-scroll-ticker {
-        animation: scroll-ticker 25s linear infinite;
+      .article-scroll-track {
+        display: flex;
+        animation: scroll-ticker 10s linear infinite;
         will-change: transform;
       }
-      .animate-scroll-ticker-reverse {
-        animation: scroll-ticker-reverse 25s linear infinite;
-        will-change: transform;
-      }
-      .group:hover .animate-scroll-ticker,
-      .group:hover .animate-scroll-ticker-reverse {
+      .article-scroll-track:hover {
         animation-play-state: paused;
       }
     </style>

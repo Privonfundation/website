@@ -150,16 +150,6 @@ const App: React.FC = () => {
               {lang === 'ro' ? 'Cod Sursă' : lang === 'es' ? 'Código Fuente' : 'Source Code'}
             </a>
           </div>
-
-          <div className="reveal-text flex items-center gap-6 md:gap-10 text-white/15 font-mono text-[8px] md:text-[9px] uppercase tracking-[0.3em] pointer-events-auto" style={{ transitionDelay: '1.1s' }}>
-            <span>Zero-Trust</span>
-            <span className="w-3 h-[1px] bg-white/20" />
-            <span>Audited</span>
-            <span className="w-3 h-[1px] bg-white/20" />
-            <span>Sovereign</span>
-            <span className="w-3 h-[1px] bg-white/20" />
-            <span>Open Source</span>
-          </div>
         </div>
       </section>
 
@@ -341,9 +331,9 @@ const App: React.FC = () => {
           </div>
 
           <div className="relative">
-            <div className="overflow-x-auto no-scrollbar flex gap-4 md:gap-5 pb-4">
-              {articles.map((art: any, i: number) => (
-                <ArticleCard key={art.id} art={art} />
+            <div className="flex gap-4 md:gap-5 pb-4 article-scroll-track">
+              {[...articles, ...articles].map((art: any, i: number) => (
+                <ArticleCard key={`${art.id}-${i}`} art={art} />
               ))}
             </div>
             <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-[#0a0a0a] to-transparent pointer-events-none z-10" />
