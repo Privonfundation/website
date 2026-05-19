@@ -7,9 +7,9 @@ import { MenuOverlay } from './MenuOverlay';
 type Language = 'ro' | 'en' | 'es';
 
 const LANG_OPTIONS = [
-  { code: 'ro' as Language, label: 'Română', flag: '🇷🇴' },
-  { code: 'en' as Language, label: 'English', flag: '🇬🇧' },
-  { code: 'es' as Language, label: 'Español', flag: '🇪🇸' },
+  { code: 'ro' as Language, label: 'Română' },
+  { code: 'en' as Language, label: 'English' },
+  { code: 'es' as Language, label: 'Español' },
 ];
 
 interface AboutNavbarProps {
@@ -99,7 +99,6 @@ export const AboutNavbar: React.FC<AboutNavbarProps> = ({ lang, setLang }) => {
                               : 'text-white/50 hover:bg-white/[0.06] hover:text-white'
                           }`}
                         >
-                          <span className="text-base leading-none">{option.flag}</span>
                           <span className="text-xs font-mono font-bold tracking-wide flex-1">{option.label}</span>
                           {lang === option.code ? (
                             <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14] shadow-[0_0_8px_#39FF14]"></span>
