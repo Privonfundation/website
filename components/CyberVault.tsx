@@ -104,10 +104,15 @@ export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => 
                 <div className="relative z-10 flex flex-col h-full">
                   {app.logoImage && (
                     <div className="flex justify-between items-start mb-8">
-                      <img src={app.logoImage} alt={app.title} className="h-12 md:h-16 w-auto object-contain" />
-                      <span className="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[7px] font-mono text-white/25 uppercase tracking-[0.15em] whitespace-nowrap">
-                        AGPL-3.0
-                      </span>
+                      <img src={app.logoImage} alt={app.title} className="h-12 md:h-16 w-auto object-contain relative z-20" />
+                      <div className="flex items-center gap-3 relative z-20">
+                        <span className="px-2.5 py-1 rounded-full bg-black/60 border border-white/15 text-[7px] font-mono text-white/30 uppercase tracking-[0.15em] whitespace-nowrap backdrop-blur-sm">
+                          AGPL-3.0
+                        </span>
+                        <a href="https://github.com/ObscuritySecurity/CrytoTool" target="_blank" rel="noopener noreferrer" className="px-2.5 py-1 rounded-full bg-black/60 border border-white/15 text-[7px] font-mono text-white/30 uppercase tracking-[0.15em] whitespace-nowrap backdrop-blur-sm hover:text-white/60 hover:border-white/30 transition-all">
+                          GitHub
+                        </a>
+                      </div>
                     </div>
                   )}
                   <div className={app.logoImage ? 'mb-6' : 'mb-8'}>

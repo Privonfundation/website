@@ -9,7 +9,7 @@ const AuroraMaterial = () => {
   const shaderArgs = useMemo(() => ({
     uniforms: {
       uTime: { value: 0 },
-      uColor: { value: new THREE.Color('#30FF1A') },
+      uColor: { value: new THREE.Color('#ffffff') },
       uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
     },
     vertexShader: `
@@ -52,7 +52,7 @@ const AuroraMaterial = () => {
         float vFade = pow(uv.y, 3.5) * 1.0 + 0.05; 
         finalMask *= vFade;
         vec3 color = uColor;
-        color.g *= 0.9 + 0.1 * sin(t + uv.x * 1.5);
+        color *= 0.95 + 0.05 * sin(t + uv.x * 1.5);
         vec3 finalColor = color * finalMask * 0.4;
         float topGlow = smoothstep(0.5, 1.0, uv.y) * 0.2;
         float intensityGlow = smoothstep(0.15, 1.0, finalMask) * 0.15;
