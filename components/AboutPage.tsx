@@ -11,9 +11,11 @@ const ABOUT = {
   ro: {
     heroTag: 'Prezentare Generală',
     heroTitle: 'Oameni.\nNu Utilizatori.',
-    heroSub: 'ObscuritySecurity — organizație nonprofit pentru libertatea digitală',
+    heroSub: 'ObscuritySecurity — construim pentru libertatea digitală',
     whoWeAre: 'Cine Suntem',
-    whoDesc: `Suntem ObscuritySecurity, o organizație nonprofit care pune Omul pe primul loc, înaintea profitului. Avem principii și valori și credem că libertatea, securitatea, anonimatul, intimitatea, personalizarea și transparența sunt factori esențiali.
+    whoDesc: `Suntem ObscuritySecurity. Nu suntem încă înregistrați oficial, dar operăm pe principii nonprofit — și suntem 100% transparenți în privința asta. Punem Omul pe primul loc, înaintea profitului. Avem principii și valori și credem că libertatea, securitatea, anonimatul, intimitatea, personalizarea și transparența sunt factori esențiali.
+
+Planificăm să ne înregistrăm oficial în sistemul juridic din Elveția, pentru a oferi un cadru legal solid și transparent.
 
 Filozofia noastră: vedem persoana din spatele ecranului. Pentru noi nu există utilizatori — credem că securitatea nu ar trebui să fie niciodată un lux, ci o funcționalitate necesară în orice software.
 
@@ -48,9 +50,11 @@ Pentru că ne pasionează aceleași lucruri: securitatea, intimitatea, personali
   en: {
     heroTag: 'Overview',
     heroTitle: 'People.\nNot Users.',
-    heroSub: 'ObscuritySecurity — a non-profit organization for digital freedom',
+    heroSub: 'ObscuritySecurity — engineering for digital freedom',
     whoWeAre: 'Who We Are',
-    whoDesc: `We are ObscuritySecurity, a non-profit organization that puts the Human first, before profit. We have principles and values, and we believe that freedom, security, anonymity, privacy, personalization, and transparency are essential factors.
+    whoDesc: `We are ObscuritySecurity. We are not yet officially registered, but we operate on nonprofit principles — and we are 100% transparent about it. We put the Human first, before profit. We have principles and values, and we believe that freedom, security, anonymity, privacy, personalization, and transparency are essential factors.
+
+We plan to officially register under Swiss jurisdiction, to provide a solid and transparent legal framework.
 
 Our philosophy: we see the person behind the screen. For us, there are no users — we believe security should never be a luxury, but a necessary feature in any software.
 
@@ -85,15 +89,17 @@ Because we are passionate about the same things: security, privacy, personalizat
   es: {
     heroTag: 'Descripción General',
     heroTitle: 'Personas.\nNo Usuarios.',
-    heroSub: 'ObscuritySecurity — una organización sin fines de lucro para la libertad digital',
+    heroSub: 'ObscuritySecurity — construyendo para la libertad digital',
     whoWeAre: 'Quiénes Somos',
-    whoDesc: `Somos ObscuritySecurity, una organización sin fines de lucro que pone al Humano en primer lugar, antes del lucro. Tenemos principios y valores, y creemos que la libertad, la seguridad, el anonimato, la privacidad, la personalización y la transparencia son factores esenciales.
+    whoDesc: `Somos ObscuritySecurity. Aún no estamos registrados oficialmente, pero operamos bajo principios sin fines de lucro — y somos 100% transparentes al respecto. Ponemos a las personas en primer lugar, antes que el beneficio. Tenemos principios y valores, y creemos que la libertad, la seguridad, el anonimato, la privacidad, la personalización y la transparencia son factores esenciales.
+
+Planeamos registrarnos oficialmente bajo la jurisdicción suiza, para proporcionar un marco legal sólido y transparente.
 
 Nuestra filosofía: vemos a la persona detrás de la pantalla. Para nosotros no existen usuarios — creemos que la seguridad nunca debería ser un lujo, sino una funcionalidad necesaria en cualquier software.
 
 Estamos aquí para hacer de la privacidad un estándar. Amamos la transparencia, así que todos nuestros proyectos son de código abierto.`,
     whyTitle: 'Por Qué Empezamos',
-    whyDesc: `Empezamos por la frustración de que grandes gigantes como Google, Microsoft y otros dominan el mercado global. Nacimos para ofrecer una alternativa ética que pone a las personas primero, con énfasis en la comunidad y no en el lucro.
+    whyDesc: `Empezamos por la frustración de que grandes gigantes como Google, Microsoft y otros dominan el mercado global. Nacimos para ofrecer una alternativa ética que pone a las personas primero, con énfasis en la comunidad.
 
 Porque nos apasionan las mismas cosas: la seguridad, la privacidad, la personalización, la ética y el bien común. Hecho por personas para personas.`,
     verifyTitle: 'No Nos Creas Bajo Palabra',
@@ -346,7 +352,7 @@ export const AboutPage: React.FC = () => {
               <Logo className="w-8 h-8" glow={false} color="#fff" />
               <div className="flex flex-col">
                 <span className="font-black tracking-[0.3em] uppercase text-xs leading-none text-white">ObscuritySecurity</span>
-                <span className="text-[7px] font-mono text-white/15 uppercase tracking-[0.4em] mt-1">Non Profit</span>
+                <span className="text-[7px] font-mono text-white/15 uppercase tracking-[0.4em] mt-1">Open Source</span>
               </div>
             </div>
             <p className="text-[9px] font-mono text-white/15 uppercase tracking-[0.6em]">
