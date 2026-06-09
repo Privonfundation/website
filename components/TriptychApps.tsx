@@ -68,10 +68,10 @@ export const TriptychApps: React.FC<TriptychAppsProps> = ({ lang }) => {
                     <p className="text-white/60 text-sm md:text-lg leading-relaxed font-mono mt-4 mb-8">
                       {app.desc}
                     </p>
-                    <button className="flex items-center gap-4 group/btn">
-                      <span className="w-10 h-[1px] bg-[#ffffff] transition-all group-hover/btn:w-16"></span>
+                    <span className="flex items-center gap-4">
+                      <span className="w-10 h-[1px] bg-[#ffffff]"></span>
                       <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#ffffff]">{lang === 'ro' ? 'Deschide Aplicația' : lang === 'es' ? 'Abrir Aplicación' : 'Launch Module'}</span>
-                    </button>
+                    </span>
                   </div>
                 </div>
               </div>

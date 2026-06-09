@@ -109,7 +109,7 @@ const GitHubIcon = () => (
   </svg>
 );
 
-export const CommunityPage: React.FC = () => {
+const CommunityPage: React.FC = () => {
   const { lang, setLang } = useLanguage();
   const c = COMMUNITY[lang];
 
@@ -162,7 +162,7 @@ export const CommunityPage: React.FC = () => {
           <FadeIn>
             <div className="flex items-center gap-4 mb-6">
               <div className="h-px w-12 bg-white/20" />
-              <span className="text-white/30 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{c.protoLabel}</span>
+              <h2 className="text-white/30 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{c.protoLabel}</h2>
               <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
             </div>
           </FadeIn>
@@ -232,7 +232,7 @@ export const CommunityPage: React.FC = () => {
             <a href={c.githubUrl} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-10 py-5 bg-[#ffffff] text-black font-black uppercase text-[11px] tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
               <GitHubIcon />
-              Explore GitHub
+              View ObscuritySecurity on GitHub
             </a>
           </FadeIn>
         </div>
@@ -266,7 +266,7 @@ export const CommunityPage: React.FC = () => {
             <a href={c.discussionsUrl} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-10 py-5 border border-white/30 text-white font-black uppercase text-[11px] tracking-widest rounded-full hover:bg-white/10 active:scale-95 transition-all duration-300 backdrop-blur-sm">
               <i className="fa-solid fa-comments text-sm"></i>
-              {lang === 'ro' ? 'Deschide Discuțiile' : lang === 'es' ? 'Abrir Discusiones' : 'Open Discussions'}
+              {lang === 'ro' ? 'Participă în Discuții' : lang === 'es' ? 'Participar en Discusiones' : 'Join GitHub Discussions'}
             </a>
           </FadeIn>
         </div>
@@ -284,3 +284,5 @@ export const CommunityPage: React.FC = () => {
     </>
   );
 };
+
+export default CommunityPage;

@@ -102,7 +102,7 @@ const FadeIn: React.FC<{ children: React.ReactNode; delay?: number }> = ({ child
   return <div ref={ref} className="transition-all duration-700" style={{ opacity: 0, transform: 'translateY(24px)' }}>{children}</div>;
 };
 
-export const ContributionsPage: React.FC = () => {
+const ContributionsPage: React.FC = () => {
   const { lang, setLang } = useLanguage();
   const c = CONTRIBUTIONS[lang];
 
@@ -155,7 +155,7 @@ export const ContributionsPage: React.FC = () => {
           <FadeIn>
             <div className="flex items-center gap-4 mb-12">
               <div className="h-px w-12 bg-white/20" />
-              <span className="text-white/30 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{c.projectsTitle}</span>
+              <h2 className="text-white/30 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{c.projectsTitle}</h2>
               <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
             </div>
           </FadeIn>
@@ -188,7 +188,7 @@ export const ContributionsPage: React.FC = () => {
                       <svg viewBox="0 0 16 16" fill="currentColor" className="w-3.5 h-3.5">
                         <path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/>
                       </svg>
-                      Contribute
+                      Contribute to CrytoTool
                     </a>
                   </div>
                   <div className="absolute top-5 right-5 flex flex-col gap-0.5 opacity-10 group-hover:opacity-30 transition-opacity duration-500">
@@ -208,7 +208,7 @@ export const ContributionsPage: React.FC = () => {
           <FadeIn>
             <div className="flex items-center gap-4 mb-12">
               <div className="h-px w-12 bg-white/20" />
-              <span className="text-white/30 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{c.areasTitle}</span>
+              <h2 className="text-white/30 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{c.areasTitle}</h2>
               <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
             </div>
           </FadeIn>
@@ -259,14 +259,14 @@ export const ContributionsPage: React.FC = () => {
                 <svg viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5">
                   <path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/>
                 </svg>
-                GitHub
+                View ObscuritySecurity on GitHub
               </a>
               <a href="https://matrix.to/#/#obscuritysecurity:matrix.org" target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-10 py-5 border border-white/30 text-white font-black uppercase text-[11px] tracking-widest rounded-full hover:bg-white/10 transition-all backdrop-blur-sm">
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                   <path d="M.632.55v22.9H2.28V24H0V0h2.28v.55zm7.043 7.26v1.157h.033c.309-.443.683-.784 1.117-1.024.433-.245.936-.365 1.5-.365.54 0 1.033.107 1.481.314.448.208.785.582 1.02 1.108.254-.374.6-.706 1.034-.992.434-.287.95-.43 1.546-.43.453 0 .872.056 1.26.167.388.11.716.286.993.53.276.245.489.559.646.951.152.392.23.863.23 1.417v5.728h-2.349V11.52c0-.286-.01-.559-.032-.812a1.755 1.755 0 0 0-.18-.66 1.106 1.106 0 0 0-.438-.448c-.194-.11-.457-.166-.785-.166-.332 0-.6.064-.803.189a1.38 1.38 0 0 0-.48.499 1.946 1.946 0 0 0-.231.696 5.56 5.56 0 0 0-.06.785v4.768h-2.35v-4.8c0-.254-.004-.503-.018-.752a2.074 2.074 0 0 0-.143-.688 1.052 1.052 0 0 0-.415-.503c-.194-.125-.476-.19-.854-.19-.111 0-.259.024-.439.074-.18.051-.36.143-.53.282-.171.138-.319.337-.439.595-.12.259-.18.6-.18 1.02v4.966H5.46V7.81zm15.693 15.64V.55H21.72V0H24v24h-2.28v-.55z" />
                 </svg>
-                Matrix
+                Join on Matrix
               </a>
             </div>
           </FadeIn>
@@ -287,3 +287,5 @@ export const ContributionsPage: React.FC = () => {
     </>
   );
 };
+
+export default ContributionsPage;

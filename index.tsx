@@ -1,18 +1,18 @@
-
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
-import { AboutPage } from './components/AboutPage';
-import { PrivacyPolicy } from './components/PrivacyPolicy';
-import { TermsAndConditions } from './components/TermsAndConditions';
-import { EthicsPage } from './components/EthicsPage';
-import { ContributionsPage } from './components/ContributionsPage';
-import { CommunityPage } from './components/CommunityPage';
-import { CrytoToolPage } from './components/CrytoToolPage';
 import { ScrollToTop } from './components/ScrollToTop';
 import { LanguageProvider } from './components/LanguageContext';
+
+const AboutPage = lazy(() => import('./components/AboutPage'));
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
+const TermsAndConditions = lazy(() => import('./components/TermsAndConditions'));
+const EthicsPage = lazy(() => import('./components/EthicsPage'));
+const ContributionsPage = lazy(() => import('./components/ContributionsPage'));
+const CommunityPage = lazy(() => import('./components/CommunityPage'));
+const CrytoToolPage = lazy(() => import('./components/CrytoToolPage'));
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -26,6 +26,7 @@ root.render(
       <BrowserRouter>
         <LanguageProvider>
           <ScrollToTop />
+          <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<App />} />
             <Route path="/about" element={<AboutPage />} />
@@ -36,6 +37,7 @@ root.render(
             <Route path="/community" element={<CommunityPage />} />
             <Route path="/crytotool" element={<CrytoToolPage />} />
           </Routes>
+          </Suspense>
         </LanguageProvider>
       </BrowserRouter>
     </HelmetProvider>

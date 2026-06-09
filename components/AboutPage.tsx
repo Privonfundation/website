@@ -206,7 +206,7 @@ const FadeIn: React.FC<{ children: React.ReactNode; className?: string; delay?: 
   return <div ref={ref} className={`transition-all duration-700 ${className}`} style={{ opacity: 0, transform: 'translateY(24px)' }}>{children}</div>;
 };
 
-export const AboutPage: React.FC = () => {
+const AboutPage: React.FC = () => {
   const { lang, setLang } = useLanguage();
   const c = ABOUT[lang];
 
@@ -285,7 +285,7 @@ export const AboutPage: React.FC = () => {
             <FadeIn>
               <div className="flex items-center gap-4 mb-8">
                 <div className="h-px w-12 bg-white/30" />
-                <span className="text-white/30 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{c.whoWeAre}</span>
+                <h2 className="text-white/30 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{c.whoWeAre}</h2>
                 <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
               </div>
             </FadeIn>
@@ -328,7 +328,7 @@ export const AboutPage: React.FC = () => {
             <FadeIn>
               <div className="flex items-center gap-4 mb-8">
                 <div className="h-px w-12 bg-white/30" />
-                <span className="text-white/30 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{c.whyTitle}</span>
+                <h2 className="text-white/30 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{c.whyTitle}</h2>
                 <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
               </div>
             </FadeIn>
@@ -374,7 +374,7 @@ export const AboutPage: React.FC = () => {
             <FadeIn>
               <div className="flex items-center gap-4 mb-8">
                 <div className="h-px w-12 bg-white/30" />
-                <span className="text-white/30 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{c.protocolLabel}</span>
+                <h2 className="text-white/30 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{c.protocolLabel}</h2>
                 <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
               </div>
             </FadeIn>
@@ -397,7 +397,7 @@ export const AboutPage: React.FC = () => {
                           <span className="text-[8px] font-mono text-white/30 tracking-wider">{a.id}</span>
                           <span className="text-[6px] font-mono text-white/15 uppercase tracking-[0.2em] bg-white/5 px-2 py-0.5 rounded-full">{a.pilar}</span>
                         </div>
-                        <h4 className="text-xs md:text-sm font-black uppercase tracking-tight text-white/80 mb-1">{a.title}</h4>
+                        <h3 className="text-xs md:text-sm font-black uppercase tracking-tight text-white/80 mb-1">{a.title}</h3>
                         <p className="text-[9px] font-mono text-white/35 leading-relaxed">{a.desc}</p>
                       </div>
                     ))}
@@ -419,7 +419,7 @@ export const AboutPage: React.FC = () => {
             <FadeIn>
               <div className="flex items-center gap-4 mb-8">
                 <div className="h-px w-12 bg-white/30" />
-                <span className="text-white/30 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{c.founderTitle}</span>
+                <h2 className="text-white/30 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{c.founderTitle}</h2>
                 <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
               </div>
             </FadeIn>
@@ -461,7 +461,7 @@ export const AboutPage: React.FC = () => {
                 { href: 'https://pixelfed.social/i/web/profile/ObscuritySecurity', label: 'Pixelfed', icon: '<svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M12 24C5.3726 24 0 18.6274 0 12S5.3726 0 12 0s12 5.3726 12 12-5.3726 12-12 12m-.9526-9.3802h2.2014c2.0738 0 3.7549-1.6366 3.7549-3.6554S15.3226 7.309 13.2488 7.309h-3.1772c-1.1964 0-2.1663.9442-2.1663 2.1089v8.208z"/></svg>' },
                 { href: 'https://lemmy.world/c/obscuritysecurity', label: 'Lemmy', icon: '<svg viewBox="0 0 1024 1024" fill="currentColor" className="w-4 h-4"><path d="m 167.03908,270.78735 c -0.94784,-0.002 -1.8939,0.004 -2.83789,0.0215 -4.31538,0.0778 -8.58934,0.3593 -12.8125,0.8457 -33.78522,3.89116 -64.215716,21.86394 -82.871086,53.27344 -18.27982,30.77718 -22.77749,64.66635 -13.46094,96.06837 9.31655,31.40203 31.88488,59.93174 65.296886,82.5332 0.20163,0.13618 0.40678,0.26709 0.61523,0.39258 28.65434,17.27768 57.18167,28.93179 87.74218,34.95508 -0.74566,12.61339 -0.72532,25.5717 0.082,38.84375 2.43989,40.10943 16.60718,77.03742 38.0957,109.67187 l -77.00781,31.4375 c -8.30605,3.25932 -12.34178,12.68234 -8.96967,20.94324 3.37211,8.2609 12.84919,12.16798 21.06342,8.68371 l 84.69727,-34.57617 c 15.70675,18.72702 33.75346,35.68305 53.12109,50.57032 0.74013,0.56891 1.4904,1.12236 2.23437,1.68554 l -49.61132,65.69141 c -5.45446,7.0474 -4.10058,17.19288 3.01098,22.5634 7.11156,5.37052 17.24028,3.89649 22.52612,-3.27824 l 50.38672,-66.71876 c 27.68572,17.53469 57.07524,31.20388 86.07227,40.25196 14.88153,27.28008 43.96965,44.64648 77.58789,44.64648 33.93762,0 63.04252,-18.68693 77.80082,-45.4375 28.7072,-9.21295 57.7527,-22.93196 85.1484,-40.40234 l 51.0977,67.66016 c 5.2858,7.17473 15.4145,8.64876 22.5261,3.27824 7.1115,-5.37052 8.4654,-15.516 3.011,-22.5634 l -50.3614,-66.68555 c 0.334,-0.25394 0.6727,-0.50077 1.0059,-0.75586 19.1376,-14.64919 37.0259,-31.28581 52.7031,-49.63476 l 82.5625,33.70507 c 8.2143,3.48427 17.6913,-0.42281 21.0634,-8.68371 3.3722,-8.2609 -0.6636,-17.68392 -8.9696,-20.94324 l -74.5391,-30.42773 c 22.1722,-32.82971 37.0383,-70.03397 40.1426,-110.46094 1.0253,-13.35251 1.2292,-26.42535 0.6387,-39.17578 30.3557,-6.05408 58.7164,-17.66833 87.2011,-34.84375 0.2085,-0.12549 0.4136,-0.2564 0.6153,-0.39258 33.412,-22.60147 55.9803,-51.13117 65.2968,-82.5332 9.3166,-31.40202 4.8189,-65.29118 -13.4609,-96.06837 -18.6553,-31.40951 -49.0859,-49.38228 -82.8711,-53.27344 -4.2231,-0.4864 -8.4971,-0.76791 -12.8125,-0.8457 -30.2077,-0.54448 -62.4407,8.82427 -93.4316,26.71484 -22.7976,13.16063 -43.3521,33.31423 -59.4375,55.30469 -44.9968,-25.75094 -103.5444,-40.25065 -175.4785,-41.43945 -6.4522,-0.10663 -13.0125,-0.10696 -19.67974,0.002 -80.18875,1.30929 -144.38284,16.5086 -192.87109,43.9922 -0.11914,-0.19111 -0.24287,-0.37932 -0.37109,-0.56446 -16.29,-22.764 -37.41085,-43.73706 -60.89649,-57.29493 -30.02247,-17.33149 -61.21051,-26.66489 -90.59375,-26.73633 z M 801.23205,576.8699 C 812.73478,427.06971 720.58431,321.98291 511.99999,325.38859 303.41568,328.79426 213.71393,428.0311 222.76794,576.8699 c 8.64289,142.08048 176.80223,246.40388 288.12038,246.40388 111.31815,0 279.45076,-104.5447 290.34373,-246.40388 z M 610.4991,644.28932 c 0,23.11198 18.70595,41.84795 41.78091,41.84795 23.07495,0 41.7809,-18.73597 41.7809,-41.84795 0,-23.112 -18.70594,-41.84796 -41.7809,-41.84796 -23.07496,0 -41.78091,18.73596 -41.78091,41.84796 z m -280.56002,0 c 0,23.32492 18.87829,42.23352 42.16586,42.23352 23.28755,0 42.16585,-18.9086 42.16585,-42.23352 0,-23.32494 -18.87829,-42.23353 -42.16585,-42.23353 -23.28757,0 -42.16586,18.90859 -42.16586,42.23353 z"/></svg>' },
               ].map((s) => (
-                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" title={s.label}
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" title={s.label} aria-label={s.label}
                   className="w-9 h-9 rounded-full border border-white/10 bg-white/[0.02] flex items-center justify-center text-white/30 hover:text-white hover:border-white/30 hover:bg-white/[0.05] transition-all duration-300"
                   dangerouslySetInnerHTML={{ __html: s.icon }} />
               ))}
@@ -490,3 +490,5 @@ export const AboutPage: React.FC = () => {
     </>
   );
 };
+
+export default AboutPage;

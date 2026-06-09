@@ -81,7 +81,7 @@ const TERMS = {
   }
 };
 
-export const TermsAndConditions: React.FC = () => {
+const TermsAndConditions: React.FC = () => {
   const { lang, setLang } = useLanguage();
   const t = TERMS[lang];
 
@@ -171,3 +171,5 @@ export const TermsAndConditions: React.FC = () => {
     </>
   );
 };
+
+export default TermsAndConditions;

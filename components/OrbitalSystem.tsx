@@ -155,9 +155,9 @@ export const OrbitalSystem: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) 
              <span className="text-[10px] font-mono text-white/30 uppercase">Operational_Status</span>
              <span className="text-[#ffffff] font-mono text-xs font-bold animate-pulse">ACTIVE_REPLICATION</span>
            </div>
-           <button className="pointer-events-auto px-10 py-4 border border-[#ffffff] text-[#ffffff] font-black uppercase text-[10px] tracking-widest hover:bg-[#ffffff] hover:text-black transition-all">
-             Initialize_Module
-           </button>
+            <span className="pointer-events-auto px-10 py-4 border border-[#ffffff] text-[#ffffff] font-black uppercase text-[10px] tracking-widest">
+              Initialize_Module
+            </span>
         </div>
       </div>
 

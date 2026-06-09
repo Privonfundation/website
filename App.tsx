@@ -1,9 +1,9 @@
 
-import React, { useEffect, useState, memo, useRef } from 'react';
+import React, { useEffect, useState, memo, useRef, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Typewriter } from './components/Typewriter';
-import Silk from './components/Silk';
+const Silk = lazy(() => import('./components/Silk'));
 import { Logo } from './components/Logo';
 import { CyberVault } from './components/CyberVault';
 import { TRANSLATIONS, PROTOCOL_ARTICLES } from './constants';
@@ -145,7 +145,7 @@ const App: React.FC = () => {
 
       <section ref={heroRef} id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-5 pt-32 md:pt-48 overflow-visible">
         <div className="absolute inset-0 z-[1] pointer-events-none opacity-75" style={{ maskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)' }}>
-          <Silk speed={5} scale={1} color="#ffffff" noiseIntensity={1.5} rotation={0} />
+          <Suspense fallback={null}><Silk speed={5} scale={1} color="#ffffff" noiseIntensity={1.5} rotation={0} /></Suspense>
         </div>
         
         <div className="relative z-[10] w-full max-w-6xl mx-auto text-center flex flex-col items-center pointer-events-none">

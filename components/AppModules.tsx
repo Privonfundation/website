@@ -66,9 +66,9 @@ const ModuleCard: React.FC<ModuleCardProps> = ({ app, lang }) => {
 
       {/* Footer-ul Modulului */}
       <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-end relative z-10">
-        <button className="px-6 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#ffffff] hover:text-black hover:border-[#ffffff] transition-all">
+        <span className="px-6 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest">
           {lang === 'ro' ? 'Detalii' : lang === 'es' ? 'Detalles' : 'Inspect'}
-        </button>
+        </span>
       </div>
 
       {/* Corner Accents */}

@@ -57,7 +57,7 @@ const ETHICS = {
   }
 };
 
-export const EthicsPage: React.FC = () => {
+const EthicsPage: React.FC = () => {
   const { lang, setLang } = useLanguage();
   const e = ETHICS[lang];
 
@@ -125,3 +125,5 @@ export const EthicsPage: React.FC = () => {
     </>
   );
 };
+
+export default EthicsPage;

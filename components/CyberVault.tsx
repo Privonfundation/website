@@ -138,7 +138,7 @@ export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => 
 
                   <div className="mt-auto flex flex-wrap items-center gap-8">
                     <Link to="/crytotool" className="px-10 py-5 bg-[#ffffff] text-black font-black uppercase text-[11px] tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_10px_30px_rgba(255,255,255,0.2)] inline-block">
-                      {lang === 'ro' ? 'Mai multe detalii' : lang === 'es' ? 'Más detalles' : 'More details'}
+                      {lang === 'ro' ? 'Explorează CrytoTool →' : lang === 'es' ? 'Explorar CrytoTool →' : 'Explore CrytoTool →'}
                     </Link>
                   </div>
                 </div>

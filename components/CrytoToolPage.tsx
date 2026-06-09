@@ -302,6 +302,7 @@ const FeatureExplorer: React.FC<{ categories: any[]; lang: string }> = ({ catego
       <div className="flex items-center justify-center gap-2 mb-8">
         {categories.map((_, i) => (
           <button key={i} onClick={() => goTo(i)}
+            aria-label={lang === 'ro' ? `Mergi la categoria ${i + 1}` : lang === 'es' ? `Ir a la categoría ${i + 1}` : `Go to category ${i + 1}`}
             className={`transition-all duration-500 ${i === active ? 'w-8 h-[3px] bg-white/60' : 'w-3 h-[3px] bg-white/15 hover:bg-white/30'}`} />
         ))}
       </div>
@@ -355,11 +356,11 @@ const FeatureExplorer: React.FC<{ categories: any[]; lang: string }> = ({ catego
         </div>
 
         {/* Nav arrows */}
-        <button onClick={prev}
+        <button onClick={prev} aria-label="Previous feature"
           className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/10 bg-black/50 flex items-center justify-center hover:bg-white/10 hover:border-white/20 transition-all opacity-50 hover:opacity-100">
           <i className="fa-solid fa-chevron-left text-[10px] md:text-xs text-white/60"></i>
         </button>
-        <button onClick={next}
+        <button onClick={next} aria-label="Next feature"
           className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/10 bg-black/50 flex items-center justify-center hover:bg-white/10 hover:border-white/20 transition-all opacity-50 hover:opacity-100">
           <i className="fa-solid fa-chevron-right text-[10px] md:text-xs text-white/60"></i>
         </button>
@@ -378,7 +379,7 @@ const FeatureExplorer: React.FC<{ categories: any[]; lang: string }> = ({ catego
   );
 };
 
-export const CrytoToolPage: React.FC = () => {
+const CrytoToolPage: React.FC = () => {
   const { lang, setLang } = useLanguage();
   const t = LANG[lang];
   const heroRef = useRef<HTMLDivElement>(null);
@@ -524,7 +525,7 @@ export const CrytoToolPage: React.FC = () => {
             <div className="flex items-center justify-center gap-4 mt-12">
               <Link to="/download"
                 className="px-8 py-4 bg-[#ffffff] text-black font-black uppercase text-[10px] tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.15)]">
-                {lang === 'ro' ? 'Descarcă' : lang === 'es' ? 'Descargar' : 'Download'}
+                {lang === 'ro' ? 'Descarcă CrytoTool' : lang === 'es' ? 'Descargar CrytoTool' : 'Download CrytoTool'}
               </Link>
               <a href="https://github.com/ObscuritySecurity/CrytoTool" target="_blank" rel="noopener noreferrer"
                 className="px-8 py-4 border border-white/20 text-white/70 font-black uppercase text-[10px] tracking-widest rounded-full hover:bg-white/5 hover:text-white transition-all duration-300">
@@ -561,7 +562,7 @@ export const CrytoToolPage: React.FC = () => {
           <FadeIn>
             <div className="flex items-center gap-4 mb-10">
               <div className="h-px w-12 bg-white/20" />
-              <span className="text-white/50 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{t.featuresLabel}</span>
+              <h2 className="text-white/50 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{t.featuresLabel}</h2>
               <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
             </div>
           </FadeIn>
@@ -675,3 +676,5 @@ export const CrytoToolPage: React.FC = () => {
     </>
   );
 };
+
+export default CrytoToolPage;

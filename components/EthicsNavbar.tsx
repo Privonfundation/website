@@ -55,10 +55,10 @@ export const EthicsNavbar: React.FC<EthicsNavbarProps> = ({ lang, setLang }) => 
           <Link to="/" className="flex items-center gap-3 md:gap-4 group">
             <Logo className="w-7 h-7 md:w-9 md:h-9 transition-all duration-500 group-hover:shadow-[0_0_20px_#ffffff]" />
             <div className="flex flex-col">
-              <h2 className="font-black text-[9px] md:text-[12px] tracking-widest uppercase leading-none mb-1 md:mb-1.5">
+              <span className="font-black text-[9px] md:text-[12px] tracking-widest uppercase leading-none mb-1 md:mb-1.5">
                 <span className="text-white">Obscurity</span>
                 <span className="text-[#ffffff]">Security</span>
-              </h2>
+              </span>
               <div className="flex items-center gap-1 md:gap-1.5">
                 <span className="w-0.5 h-0.5 md:w-1 md:h-1 rounded-full bg-[#ffffff] shadow-[0_0_5px_#ffffff] animate-pulse"></span>
                 <span className="text-[6px] md:text-[8px] font-mono text-white font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase leading-none">
@@ -70,8 +70,9 @@ export const EthicsNavbar: React.FC<EthicsNavbarProps> = ({ lang, setLang }) => 
 
           <div className="flex items-center gap-2 md:gap-4">
             <div ref={langRef} className="relative">
-              <button
+              <button 
                 onClick={() => setLangOpen(prev => !prev)}
+                aria-label={lang === 'ro' ? 'Schimbă limba' : lang === 'es' ? 'Cambiar idioma' : 'Change language'}
                 className="flex items-center justify-center md:gap-2 w-10 h-10 md:w-auto md:h-auto md:px-4 md:py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/[0.18] transition-all active:scale-95"
               >
                 <i className="fa-solid fa-globe text-white/60 text-sm md:text-sm"></i>
@@ -111,8 +112,9 @@ export const EthicsNavbar: React.FC<EthicsNavbarProps> = ({ lang, setLang }) => 
               )}
             </div>
 
-            <button
+            <button 
               onClick={toggleMenu}
+              aria-label={lang === 'ro' ? 'Meniu' : lang === 'es' ? 'Menú' : 'Menu'}
               className="group flex items-center justify-center md:gap-4 w-10 h-10 md:w-auto md:h-auto md:py-2 md:pl-4 md:pr-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-all active:scale-95"
             >
               <span className="hidden md:inline text-[9px] font-bold uppercase tracking-[0.4em] text-white/60 group-hover:text-white pt-0.5">{lang === 'ro' ? 'Meniu' : lang === 'es' ? 'Menú' : 'Menu'}</span>

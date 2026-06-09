@@ -171,7 +171,7 @@ const PRIVACY = {
   }
 };
 
-export const PrivacyPolicy: React.FC = () => {
+const PrivacyPolicy: React.FC = () => {
   const { lang, setLang } = useLanguage();
   const p = PRIVACY[lang];
 
@@ -281,3 +281,5 @@ export const PrivacyPolicy: React.FC = () => {
     </>
   );
 };
+
+export default PrivacyPolicy;
