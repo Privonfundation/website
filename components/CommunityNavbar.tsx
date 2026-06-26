@@ -43,10 +43,7 @@ export const CommunityNavbar: React.FC<CommunityNavbarProps> = ({ lang, setLang 
           <Link to="/" className="flex items-center gap-3 md:gap-4 group">
             <Logo className="w-7 h-7 md:w-9 md:h-9 transition-all duration-500 group-hover:shadow-[0_0_20px_#ffffff]" />
             <div className="flex flex-col">
-              <span className="font-black text-[9px] md:text-[12px] tracking-widest uppercase leading-none mb-1 md:mb-1.5">
-                <span className="text-white">Obscurity</span>
-                <span className="text-[#ffffff]">Security</span>
-              </span>
+                <span className="font-black text-[9px] md:text-[12px] tracking-widest uppercase leading-none mb-1 md:mb-1.5">Privon Foundation</span>
               <div className="flex items-center gap-1 md:gap-1.5">
                 <span className="w-0.5 h-0.5 md:w-1 md:h-1 rounded-full bg-[#ffffff] shadow-[0_0_5px_#ffffff] animate-pulse"></span>
                 <span className="text-[6px] md:text-[8px] font-mono text-white font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase leading-none">

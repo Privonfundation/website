@@ -42,7 +42,7 @@ export const TRANSLATIONS = {
     ANDROID_TITLE: 'Menținem Android Deschis: Luptă Împotriva Închiderii.',
     ANDROID_LABEL: 'Context',
     ANDROID_PREAMBLE: 'Începând cu septembrie 2026, Google va impune ca fiecare aplicație Android să fie înregistrată de un dezvoltator verificat. Această verificare necesită plata unei taxe, predarea unui act de identitate guvernamental, dovada cheilor private de semnare și listarea tuturor aplicațiilor. Aceasta nu este o măsură de securitate — este o închidere a ecosistemului deschis care a definit Android de la început.',
-    ANDROID_CARD_TEXT: 'La ObscuritySecurity, credem că dreptul de a instala software pe un dispozitiv pe care l-ai cumpărat este fundamental. Ne angajăm să luptăm împotriva acestei mișcări și să facem vocea comunității auzită. Nu vom sta cu brațele încrucișate în timp ce o corporație închide o platformă construită pe promisiunea libertății.',
+    ANDROID_CARD_TEXT: 'La Privon Foundation, credem că dreptul de a instala software pe un dispozitiv pe care l-ai cumpărat este fundamental. Ne angajăm să luptăm împotriva acestei mișcări și să facem vocea comunității auzită. Nu vom sta cu brațele încrucișate în timp ce o corporație închide o platformă construită pe promisiunea libertății.',
     ANDROID_ARTICLES: [
       { id: 'STEP 01', title: 'Instalează F-Droid', desc: 'Alternativele supraviețuiesc doar dacă oamenii le folosesc. Instalează F-Droid pe fiecare dispozitiv Android pe care îl deții.', pilar: 'Acțiune', status: 'Essential' },
       { id: 'STEP 02', title: 'Semnează Petiția', desc: 'Peste 100.000 de semnatari s-au alăturat deja. Fă-ți vocea auzită pe change.org și oprește această mișcare.', pilar: 'Acțiune', status: 'Essential' },
@@ -90,7 +90,7 @@ export const TRANSLATIONS = {
     ANDROID_TITLE: 'Keep Android Open: Fight The Lockdown.',
     ANDROID_LABEL: 'Context',
     ANDROID_PREAMBLE: 'Starting September 2026, Google will require every Android app to be registered by a verified developer. This verification requires paying a fee, surrendering government ID, providing evidence of private signing keys, and listing all applications. This is not a security measure — it is a lockdown of the open ecosystem that has defined Android from the start.',
-    ANDROID_CARD_TEXT: 'At ObscuritySecurity, we believe the right to install software on a device you purchased is fundamental. We commit to fighting this move and making the community\'s voice heard. We will not stand idly by while a corporation closes a platform built on the promise of freedom.',
+    ANDROID_CARD_TEXT: 'At Privon Foundation, we believe the right to install software on a device you purchased is fundamental. We commit to fighting this move and making the community\'s voice heard. We will not stand idly by while a corporation closes a platform built on the promise of freedom.',
     ANDROID_ARTICLES: [
       { id: 'STEP 01', title: 'Install F-Droid', desc: 'Alternatives only survive if people actually use them. Install F-Droid on every Android device you own.', pilar: 'Action', status: 'Essential' },
       { id: 'STEP 02', title: 'Sign the Petition', desc: 'Over 100,000 signatories have already joined. Make your voice heard on change.org and stop this movement.', pilar: 'Action', status: 'Essential' },
@@ -136,7 +136,7 @@ export const TRANSLATIONS = {
     ANDROID_TITLE: 'Mantén Android Abierto: Lucha Contra El Cierre.',
     ANDROID_LABEL: 'Contexto',
     ANDROID_PREAMBLE: 'A partir de septiembre de 2026, Google exigirá que cada app de Android sea registrada por un desarrollador verificado. Esta verificación requiere pagar una tarifa, entregar un documento de identidad gubernamental, proporcionar evidencia de claves privadas de firma y listar todas las aplicaciones. Esto no es una medida de seguridad — es un cierre del ecosistema abierto que ha definido a Android desde el inicio.',
-    ANDROID_CARD_TEXT: 'En ObscuritySecurity, creemos que el derecho de instalar software en un dispositivo que compraste es fundamental. Nos comprometemos a luchar contra esta medida y hacer que la voz de la comunidad se escuche. No nos quedaremos de brazos cruzados mientras una corporación cierra una plataforma construida sobre la promesa de libertad.',
+    ANDROID_CARD_TEXT: 'En Privon Foundation, creemos que el derecho de instalar software en un dispositivo que compraste es fundamental. Nos comprometemos a luchar contra esta medida y hacer que la voz de la comunidad se escuche. No nos quedaremos de brazos cruzados mientras una corporación cierra una plataforma construida sobre la promesa de libertad.',
     ANDROID_ARTICLES: [
       { id: 'STEP 01', title: 'Instala F-Droid', desc: 'Las alternativas solo sobreviven si la gente las usa. Instala F-Droid en cada dispositivo Android que poseas.', pilar: 'Acción', status: 'Essential' },
       { id: 'STEP 02', title: 'Firma la Petición', desc: 'Más de 100.000 firmantes ya se han unido. Haz que tu voz se escuche en change.org y detén este movimiento.', pilar: 'Acción', status: 'Essential' },

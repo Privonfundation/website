@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => {
       plugins: [
         react(),
         vitePluginSitemap({
-          hostname: 'https://obscuritysecurity.github.io',
+          hostname: 'https://privon.pages.dev',
           dynamicRoutes: [
             '/',
             '/about',

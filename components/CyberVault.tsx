@@ -110,7 +110,7 @@ export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => 
                         <span className="px-2.5 py-1 rounded-full bg-black/60 border border-white/15 text-[7px] font-mono text-white/30 uppercase tracking-[0.15em] whitespace-nowrap backdrop-blur-sm">
                           AGPL-3.0
                         </span>
-                        <a href="https://github.com/ObscuritySecurity/CrytoTool" target="_blank" rel="noopener noreferrer" className="px-2.5 py-1 rounded-full bg-black/60 border border-white/15 text-[7px] font-mono text-white/30 uppercase tracking-[0.15em] whitespace-nowrap backdrop-blur-sm hover:text-white/60 hover:border-white/30 transition-all">
+                        <a href="https://github.com/Privonfundation/CrytoTool" target="_blank" rel="noopener noreferrer" className="px-2.5 py-1 rounded-full bg-black/60 border border-white/15 text-[7px] font-mono text-white/30 uppercase tracking-[0.15em] whitespace-nowrap backdrop-blur-sm hover:text-white/60 hover:border-white/30 transition-all">
                           GitHub
                         </a>
                       </div>

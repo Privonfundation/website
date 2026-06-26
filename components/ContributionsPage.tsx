@@ -110,7 +110,7 @@ const ContributionsPage: React.FC = () => {
     <>
       <Seo
         title="Contributions"
-        description="Contribute to ObscuritySecurity open-source projects. Help build privacy-first, encrypted tools for everyone. CrytoTool contributions welcome."
+        description="Contribute to Privon Foundation open-source projects. Help build privacy-first, encrypted tools for everyone. CrytoTool contributions welcome."
         path="/contributions"
       />
       <div className="min-h-screen bg-[#0a0a0a] text-white selection:bg-[#ffffff] selection:text-black overflow-x-hidden">
@@ -183,7 +183,7 @@ const ContributionsPage: React.FC = () => {
                       <span className="text-[7px] font-mono text-white/20 uppercase tracking-[0.3em] block mb-2">Needs</span>
                       <span className="text-[10px] font-mono text-white/50">{p.needs}</span>
                     </div>
-                    <a href="https://github.com/ObscuritySecurity/CrytoTool/blob/main/docs/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer"
+                    <a href="https://github.com/Privonfundation/CrytoTool/blob/main/docs/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer"
                       className="mt-6 inline-flex items-center gap-2 px-5 py-3 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:border-white/20 transition-all duration-300 text-[9px] font-mono text-white/50 hover:text-white uppercase tracking-[0.2em]">
                       <svg viewBox="0 0 16 16" fill="currentColor" className="w-3.5 h-3.5">
                         <path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/>
@@ -254,14 +254,14 @@ const ContributionsPage: React.FC = () => {
           </FadeIn>
           <FadeIn delay={400}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://github.com/ObscuritySecurity" target="_blank" rel="noopener noreferrer"
+              <a href="https://github.com/Privonfundation" target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-10 py-5 bg-[#ffffff] text-black font-black uppercase text-[11px] tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
                 <svg viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5">
                   <path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/>
                 </svg>
-                View ObscuritySecurity on GitHub
+                View Privon Foundation on GitHub
               </a>
-              <a href="https://matrix.to/#/#obscuritysecurity:matrix.org" target="_blank" rel="noopener noreferrer"
+              <a href="https://matrix.to/#/#privon:matrix.org" target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-10 py-5 border border-white/30 text-white font-black uppercase text-[11px] tracking-widest rounded-full hover:bg-white/10 transition-all backdrop-blur-sm">
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                   <path d="M.632.55v22.9H2.28V24H0V0h2.28v.55zm7.043 7.26v1.157h.033c.309-.443.683-.784 1.117-1.024.433-.245.936-.365 1.5-.365.54 0 1.033.107 1.481.314.448.208.785.582 1.02 1.108.254-.374.6-.706 1.034-.992.434-.287.95-.43 1.546-.43.453 0 .872.056 1.26.167.388.11.716.286.993.53.276.245.489.559.646.951.152.392.23.863.23 1.417v5.728h-2.349V11.52c0-.286-.01-.559-.032-.812a1.755 1.755 0 0 0-.18-.66 1.106 1.106 0 0 0-.438-.448c-.194-.11-.457-.166-.785-.166-.332 0-.6.064-.803.189a1.38 1.38 0 0 0-.48.499 1.946 1.946 0 0 0-.231.696 5.56 5.56 0 0 0-.06.785v4.768h-2.35v-4.8c0-.254-.004-.503-.018-.752a2.074 2.074 0 0 0-.143-.688 1.052 1.052 0 0 0-.415-.503c-.194-.125-.476-.19-.854-.19-.111 0-.259.024-.439.074-.18.051-.36.143-.53.282-.171.138-.319.337-.439.595-.12.259-.18.6-.18 1.02v4.966H5.46V7.81zm15.693 15.64V.55H21.72V0H24v24h-2.28v-.55z" />
@@ -278,7 +278,7 @@ const ContributionsPage: React.FC = () => {
         <div className="max-w-5xl mx-auto">
           <div className="flex justify-center">
             <span className="text-[8px] font-mono text-white/15 uppercase tracking-[0.6em]">
-              ©2026 OBSCURITYSECURITY — AGPL-3.0
+              ©2026 PRIVON FOUNDATION — AGPL-3.0
             </span>
           </div>
         </div>

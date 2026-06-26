@@ -31,58 +31,58 @@ const NetworkLogo: React.FC<{ name: string }> = ({ name }) => {
 
 const COMMUNITY = {
   ro: {
-    heroTitle: 'Comunitatea\nObscurity',
+    heroTitle: 'Comunitatea\nPrivon',
     heroSub: 'Construim un ecosistem digital liber. Fiecare voce contează.',
     protoLabel: 'Rețele Federale',
     protoDesc: 'Folosim doar platforme federale și open-source. Fără lock-in, fără algoritmi care te manipulează. Datele și conversațiile tale rămân ale tale.',
     networks: [
-      { name: 'Matrix', handle: '@obscuritysecurity:matrix.org', url: 'https://matrix.to/#/#obscuritysecurity:matrix.org', desc: 'Chat criptat end-to-end. Discuții tehnice, suport, comunitate.', protocol: 'Protocol: Matrix / Olm-Megolm' },
-      { name: 'Mastodon', handle: '@ObscuritySecurity', url: 'https://mastodon.social/@ObscuritySecurity', desc: 'Microblogging federat. Anunțuri, gânduri, actualizări.', protocol: 'Protocol: ActivityPub' },
-      { name: 'Pixelfed', handle: '@ObscuritySecurity', url: 'https://pixelfed.social/i/web/profile/ObscuritySecurity', desc: 'Galerie foto federată, fără algoritmi, fără reclame.', protocol: 'Protocol: ActivityPub' },
-      { name: 'Lemmy', handle: 'c/obscuritysecurity', url: 'https://lemmy.world/c/obscuritysecurity', desc: 'Agregator de link-uri și discuții federat. Alternativa la Reddit.', protocol: 'Protocol: ActivityPub' },
+      { name: 'Matrix', handle: '@privon:matrix.org', url: 'https://matrix.to/#/#privon:matrix.org', desc: 'Chat criptat end-to-end. Discuții tehnice, suport, comunitate.', protocol: 'Protocol: Matrix / Olm-Megolm' },
+      { name: 'Mastodon', handle: '@PrivonFoundation', url: 'https://mastodon.social/@PrivonFoundation', desc: 'Microblogging federat. Anunțuri, gânduri, actualizări.', protocol: 'Protocol: ActivityPub' },
+      { name: 'Pixelfed', handle: '@PrivonFoundation', url: 'https://pixelfed.social/i/web/profile/PrivonFoundation', desc: 'Galerie foto federată, fără algoritmi, fără reclame.', protocol: 'Protocol: ActivityPub' },
+      { name: 'Lemmy', handle: 'c/privon', url: 'https://lemmy.world/c/privon', desc: 'Agregator de link-uri și discuții federat. Alternativa la Reddit.', protocol: 'Protocol: ActivityPub' },
     ],
     githubTitle: 'GitHub',
     githubDesc: 'Tot codul e deschis. Contribuie, auditează, fork-uiește. Transparența e fundamentul nostru.',
-    githubUrl: 'https://github.com/ObscuritySecurity',
+    githubUrl: 'https://github.com/Privonfundation',
     discussionsTitle: 'Discuții GitHub',
     discussionsDesc: 'Propune funcționalități, raportează probleme, discută cu comunitatea. Totul e deschis.',
-    discussionsUrl: 'https://github.com/ObscuritySecurity/CrytoTool/discussions',
+    discussionsUrl: 'https://github.com/Privonfundation/CrytoTool/discussions',
   },
   en: {
-    heroTitle: 'Obscurity\nCommunity',
+    heroTitle: 'Privon\nCommunity',
     heroSub: 'Building a free digital ecosystem. Every voice matters.',
     protoLabel: 'Federated Networks',
     protoDesc: 'We use only federated and open-source platforms. No lock-in, no algorithms that manipulate you. Your data and conversations remain yours.',
     networks: [
-      { name: 'Matrix', handle: '@obscuritysecurity:matrix.org', url: 'https://matrix.to/#/#obscuritysecurity:matrix.org', desc: 'End-to-end encrypted chat. Technical discussions, support, community.', protocol: 'Protocol: Matrix / Olm-Megolm' },
-      { name: 'Mastodon', handle: '@ObscuritySecurity', url: 'https://mastodon.social/@ObscuritySecurity', desc: 'Federated microblogging. Announcements, thoughts, updates.', protocol: 'Protocol: ActivityPub' },
-      { name: 'Pixelfed', handle: '@ObscuritySecurity', url: 'https://pixelfed.social/i/web/profile/ObscuritySecurity', desc: 'Federated photo gallery. No algorithms, no ads.', protocol: 'Protocol: ActivityPub' },
-      { name: 'Lemmy', handle: 'c/obscuritysecurity', url: 'https://lemmy.world/c/obscuritysecurity', desc: 'Federated link aggregator and discussions. Reddit alternative.', protocol: 'Protocol: ActivityPub' },
+      { name: 'Matrix', handle: '@privon:matrix.org', url: 'https://matrix.to/#/#privon:matrix.org', desc: 'End-to-end encrypted chat. Technical discussions, support, community.', protocol: 'Protocol: Matrix / Olm-Megolm' },
+      { name: 'Mastodon', handle: '@PrivonFoundation', url: 'https://mastodon.social/@PrivonFoundation', desc: 'Federated microblogging. Announcements, thoughts, updates.', protocol: 'Protocol: ActivityPub' },
+      { name: 'Pixelfed', handle: '@PrivonFoundation', url: 'https://pixelfed.social/i/web/profile/PrivonFoundation', desc: 'Federated photo gallery. No algorithms, no ads.', protocol: 'Protocol: ActivityPub' },
+      { name: 'Lemmy', handle: 'c/privon', url: 'https://lemmy.world/c/privon', desc: 'Federated link aggregator and discussions. Reddit alternative.', protocol: 'Protocol: ActivityPub' },
     ],
     githubTitle: 'GitHub',
     githubDesc: 'All code is open. Contribute, audit, fork. Transparency is our foundation.',
-    githubUrl: 'https://github.com/ObscuritySecurity',
+    githubUrl: 'https://github.com/Privonfundation',
     discussionsTitle: 'GitHub Discussions',
     discussionsDesc: 'Request features, report issues, discuss with the community. Everything is open.',
-    discussionsUrl: 'https://github.com/ObscuritySecurity/CrytoTool/discussions',
+    discussionsUrl: 'https://github.com/Privonfundation/CrytoTool/discussions',
   },
   es: {
-    heroTitle: 'Comunidad\nObscurity',
+    heroTitle: 'Comunidad\nPrivon',
     heroSub: 'Construyendo un ecosistema digital libre. Cada voz importa.',
     protoLabel: 'Redes Federales',
     protoDesc: 'Usamos solo plataformas federales y de código abierto. Sin bloqueo, sin algoritmos que te manipulen. Tus datos y conversaciones siguen siendo tuyos.',
     networks: [
-      { name: 'Matrix', handle: '@obscuritysecurity:matrix.org', url: 'https://matrix.to/#/#obscuritysecurity:matrix.org', desc: 'Chat cifrado de extremo a extremo. Discusiones técnicas, soporte, comunidad.', protocol: 'Protocolo: Matrix / Olm-Megolm' },
-      { name: 'Mastodon', handle: '@ObscuritySecurity', url: 'https://mastodon.social/@ObscuritySecurity', desc: 'Microblogging federado. Anuncios, pensamientos, actualizaciones.', protocol: 'Protocolo: ActivityPub' },
-      { name: 'Pixelfed', handle: '@ObscuritySecurity', url: 'https://pixelfed.social/i/web/profile/ObscuritySecurity', desc: 'Galería de fotos federada. Sin algoritmos, sin anuncios.', protocol: 'Protocolo: ActivityPub' },
-      { name: 'Lemmy', handle: 'c/obscuritysecurity', url: 'https://lemmy.world/c/obscuritysecurity', desc: 'Agregador de enlaces y discusiones federado. Alternativa a Reddit.', protocol: 'Protocolo: ActivityPub' },
+      { name: 'Matrix', handle: '@privon:matrix.org', url: 'https://matrix.to/#/#privon:matrix.org', desc: 'Chat cifrado de extremo a extremo. Discusiones técnicas, soporte, comunidad.', protocol: 'Protocolo: Matrix / Olm-Megolm' },
+      { name: 'Mastodon', handle: '@PrivonFoundation', url: 'https://mastodon.social/@PrivonFoundation', desc: 'Microblogging federado. Anuncios, pensamientos, actualizaciones.', protocol: 'Protocolo: ActivityPub' },
+      { name: 'Pixelfed', handle: '@PrivonFoundation', url: 'https://pixelfed.social/i/web/profile/PrivonFoundation', desc: 'Galería de fotos federada. Sin algoritmos, sin anuncios.', protocol: 'Protocolo: ActivityPub' },
+      { name: 'Lemmy', handle: 'c/privon', url: 'https://lemmy.world/c/privon', desc: 'Agregador de enlaces y discusiones federado. Alternativa a Reddit.', protocol: 'Protocolo: ActivityPub' },
     ],
     githubTitle: 'GitHub',
     githubDesc: 'Todo el código es abierto. Contribuye, audita, haz fork. La transparencia es nuestro fundamento.',
-    githubUrl: 'https://github.com/ObscuritySecurity',
+    githubUrl: 'https://github.com/Privonfundation',
     discussionsTitle: 'Discusiones GitHub',
     discussionsDesc: 'Solicita funciones, reporta problemas, discute con la comunidad. Todo es abierto.',
-    discussionsUrl: 'https://github.com/ObscuritySecurity/CrytoTool/discussions',
+    discussionsUrl: 'https://github.com/Privonfundation/CrytoTool/discussions',
   }
 };
 
@@ -117,7 +117,7 @@ const CommunityPage: React.FC = () => {
     <>
       <Seo
         title="Community"
-        description="Join the ObscuritySecurity community on Matrix, Mastodon, Pixelfed, Lemmy, and GitHub. Privacy-first, open-source, for people."
+        description="Join the Privon Foundation community on Matrix, Mastodon, Pixelfed, Lemmy, and GitHub. Privacy-first, open-source, for people."
         path="/community"
       />
       <div className="min-h-screen bg-[#0a0a0a] text-white selection:bg-[#ffffff] selection:text-black overflow-x-hidden">
@@ -232,7 +232,7 @@ const CommunityPage: React.FC = () => {
             <a href={c.githubUrl} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-10 py-5 bg-[#ffffff] text-black font-black uppercase text-[11px] tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
               <GitHubIcon />
-              View ObscuritySecurity on GitHub
+              View Privon Foundation on GitHub
             </a>
           </FadeIn>
         </div>
@@ -276,7 +276,7 @@ const CommunityPage: React.FC = () => {
       <section className="py-16 px-5 border-t border-white/5">
         <div className="max-w-5xl mx-auto flex justify-center">
           <span className="text-[8px] font-mono text-white/15 uppercase tracking-[0.6em]">
-            ©2026 OBSCURITYSECURITY — AGPL-3.0
+            ©2026 PRIVON FOUNDATION — AGPL-3.0
           </span>
         </div>
       </section>

@@ -57,7 +57,7 @@ const PRIVACY = {
     updates: 'Actualizări ale Politicii',
     updatesDesc: 'Această politică de confidențialitate poate fi actualizată ocazional pentru a reflecta schimbări în practicile noastre sau în cerințele legale. Orice modificare va fi publicată pe această pagină, iar data ultimei actualizări va fi actualizată în consecință. Deoarece nu colectăm date, aceste actualizări nu îți vor afecta drepturile sau experiența.',
     contact: 'Contact',
-    contactDesc: 'Pentru întrebări legate de această politică de confidențialitate, folosim ProtonMail — un serviciu de email criptat end-to-end care nu are acces la conținutul mesajelor. Adresa este disponibilă doar pentru contacte necesare, nu pentru înregistrări sau colectare de date: obscurity.devv@protonmail.com'
+    contactDesc: 'Pentru întrebări legate de această politică de confidențialitate, folosim ProtonMail — un serviciu de email criptat end-to-end care nu are acces la conținutul mesajelor. Adresa este disponibilă doar pentru contacte necesare, nu pentru înregistrări sau colectare de date: privon.dev@tuta.io'
   },
   en: {
     title: 'Privacy Policy',
@@ -112,7 +112,7 @@ const PRIVACY = {
     updates: 'Policy Updates',
     updatesDesc: 'This privacy policy may be updated occasionally to reflect changes in our practices or legal requirements. Any modifications will be published on this page, and the last updated date will be revised accordingly. Since we do not collect data, these updates will not affect your rights or experience.',
     contact: 'Contact',
-    contactDesc: 'For questions regarding this privacy policy, we use ProtonMail — an end-to-end encrypted email service that cannot access message content. The address is available only for necessary contacts, not for registration or data collection: obscurity.devv@protonmail.com'
+    contactDesc: 'For questions regarding this privacy policy, we use ProtonMail — an end-to-end encrypted email service that cannot access message content. The address is available only for necessary contacts, not for registration or data collection: privon.dev@tuta.io'
   },
   es: {
     title: 'Política de Privacidad',
@@ -167,7 +167,7 @@ const PRIVACY = {
     updates: 'Actualizaciones de la Política',
     updatesDesc: 'Esta política de privacidad puede actualizarse ocasionalmente para reflejar cambios en nuestras prácticas o requisitos legales. Cualquier modificación se publicará en esta página y la fecha de la última actualización se revisará en consecuencia. Dado que no recopilamos datos, estas actualizaciones no afectarán tus derechos ni tu experiencia.',
     contact: 'Contacto',
-    contactDesc: 'Para preguntas sobre esta política de privacidad, usamos ProtonMail — un servicio de correo electrónico cifrado de extremo a extremo que no puede acceder al contenido de los mensajes. La dirección está disponible solo para contactos necesarios, no para registro o recopilación de datos: obscurity.devv@protonmail.com'
+    contactDesc: 'Para preguntas sobre esta política de privacidad, usamos ProtonMail — un servicio de correo electrónico cifrado de extremo a extremo que no puede acceder al contenido de los mensajes. La dirección está disponible solo para contactos necesarios, no para registro o recopilación de datos: privon.dev@tuta.io'
   }
 };
 
@@ -179,7 +179,7 @@ const PrivacyPolicy: React.FC = () => {
     <>
       <Seo
         title="Privacy Policy"
-        description="ObscuritySecurity collects ZERO data. Read our privacy policy — no tracking, no cookies, no data collection. Protocol 3305 compliant."
+        description="Privon Foundation collects ZERO data. Read our privacy policy — no tracking, no cookies, no data collection. Protocol 3305 compliant."
         path="/privacy"
       />
       <div style={{ background: '#0a0a0a', minHeight: '100vh', color: '#fff', fontFamily: 'Inter, sans-serif' }}>
@@ -273,7 +273,7 @@ const PrivacyPolicy: React.FC = () => {
 
         <div style={{ marginTop: '64px', paddingTop: '24px', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', justifyContent: 'center' }}>
           <span style={{ fontSize: '9px', fontFamily: 'Fragment Mono, monospace', color: 'rgba(255,255,255,0.15)', textTransform: 'uppercase', letterSpacing: '0.6em' }}>
-            ©2026 OBSCURITYSECURITY — AGPL-3.0
+            ©2026 PRIVON FOUNDATION — AGPL-3.0
           </span>
         </div>
       </main>

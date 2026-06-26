@@ -462,7 +462,7 @@ const CrytoToolPage: React.FC = () => {
                     : lang === 'es'
                     ? 'CrytoTool es compatible con Protocol-3305 y respeta todos sus principios.'
                     : 'CrytoTool is compliant with Protocol-3305 and respects all its principles.'}
-                  <a href="https://github.com/ObscuritySecurity/protocol-3305" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-white underline underline-offset-2 transition-colors">
+                  <a href="https://github.com/Privonfundation/protocol-3305" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-white underline underline-offset-2 transition-colors">
                     Protocol-3305
                   </a>
                 </span>
@@ -527,7 +527,7 @@ const CrytoToolPage: React.FC = () => {
                 className="px-8 py-4 bg-[#ffffff] text-black font-black uppercase text-[10px] tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.15)]">
                 {lang === 'ro' ? 'Descarcă CrytoTool' : lang === 'es' ? 'Descargar CrytoTool' : 'Download CrytoTool'}
               </Link>
-              <a href="https://github.com/ObscuritySecurity/CrytoTool" target="_blank" rel="noopener noreferrer"
+              <a href="https://github.com/Privonfundation/CrytoTool" target="_blank" rel="noopener noreferrer"
                 className="px-8 py-4 border border-white/20 text-white/70 font-black uppercase text-[10px] tracking-widest rounded-full hover:bg-white/5 hover:text-white transition-all duration-300">
                 <i className="fa-brands fa-github mr-2"></i> GitHub
               </a>
@@ -605,7 +605,7 @@ const CrytoToolPage: React.FC = () => {
           </FadeIn>
           <FadeIn delay={450}>
             <div className="mt-10 pt-10 border-t border-white/5">
-              <a href="https://github.com/ObscuritySecurity/CrytoTool" target="_blank" rel="noopener noreferrer"
+              <a href="https://github.com/Privonfundation/CrytoTool" target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-[9px] font-mono text-white/50 hover:text-white uppercase tracking-[0.3em] transition-colors">
                 <i className="fa-brands fa-github"></i> {t.githubBtn}
               </a>
@@ -664,7 +664,7 @@ const CrytoToolPage: React.FC = () => {
       {/* Footer */}
       <footer className="py-12 px-5 border-t border-white/5">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <span className="text-[7px] font-mono text-white/40 uppercase tracking-[0.6em]">©2026 ObscuritySecurity — AGPL-3.0</span>
+          <span className="text-[7px] font-mono text-white/40 uppercase tracking-[0.6em]">©2026 Privon Foundation — AGPL-3.0</span>
           <div className="flex gap-6">
             <Link to="/privacy" className="text-[7px] font-mono text-white/40 hover:text-white/60 uppercase tracking-[0.4em] transition-colors">Privacy</Link>
             <Link to="/terms" className="text-[7px] font-mono text-white/40 hover:text-white/60 uppercase tracking-[0.4em] transition-colors">Terms</Link>

@@ -1,6 +1,6 @@
 {
-  "name": "ObscuritySecurity",
-  "description": "A modern, 3D-enabled landing page for ObscuritySecurity, a non-profit organization dedicated to privacy and default security.",
+  "name": "Privon Foundation",
+  "description": "A modern, 3D-enabled landing page for Privon Foundation, a non-profit organization dedicated to privacy and default security.",
   "requestFramePermissions": [
     "camera"
   ]

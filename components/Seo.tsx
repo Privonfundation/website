@@ -10,12 +10,12 @@ interface SeoProps {
   type?: string;
 }
 
-const SITE_URL = 'https://obscuritysecurity.github.io';
+const SITE_URL = 'https://privon.github.io';
 const DEFAULT_IMAGE = '/og-image.png';
 
 const Seo: React.FC<SeoProps> = ({ title, description, path, lang = 'en', image = DEFAULT_IMAGE, type = 'website' }) => {
   const url = `${SITE_URL}${path}`;
-  const fullTitle = `${title} | ObscuritySecurity`;
+  const fullTitle = `${title} | Privon Foundation`;
 
   return (
     <Helmet>
@@ -30,7 +30,7 @@ const Seo: React.FC<SeoProps> = ({ title, description, path, lang = 'en', image 
       <meta property="og:url" content={url} />
       <meta property="og:image" content={`${SITE_URL}${image}`} />
       <meta property="og:type" content={type} />
-      <meta property="og:site_name" content="ObscuritySecurity" />
+      <meta property="og:site_name" content="Privon Foundation" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -43,22 +43,22 @@ const Seo: React.FC<SeoProps> = ({ title, description, path, lang = 'en', image 
         {JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Organization',
-          name: 'ObscuritySecurity',
+          name: 'Privon Foundation',
           url: SITE_URL,
           logo: `${SITE_URL}/CrytoTool.png`,
           description: 'Open-source, privacy-first cybersecurity solutions. Zero data collection, zero tracking, zero knowledge.',
           foundingDate: '2026',
-          legalName: 'ObscuritySecurity',
+          legalName: 'Privon Foundation',
           sameAs: [
-            'https://github.com/ObscuritySecurity',
-            'https://matrix.to/#/#obscuritysecurity:matrix.org',
-            'https://mastodon.social/@ObscuritySecurity',
-            'https://pixelfed.social/i/web/profile/ObscuritySecurity',
-            'https://lemmy.world/c/obscuritysecurity',
+            'https://github.com/Privonfundation',
+            'https://matrix.to/#/#privon:matrix.org',
+            'https://mastodon.social/@PrivonFoundation',
+            'https://pixelfed.social/i/web/profile/PrivonFoundation',
+            'https://lemmy.world/c/privon',
           ],
           contactPoint: {
             '@type': 'ContactPoint',
-            email: 'obscurity.devv@protonmail.com',
+              email: 'privon.dev@tuta.io',
             contactType: 'customer support',
           },
         })}
