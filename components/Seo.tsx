@@ -11,7 +11,7 @@ interface SeoProps {
 }
 
 const SITE_URL = 'https://privon.github.io';
-const DEFAULT_IMAGE = '/og-image.png';
+const DEFAULT_IMAGE = '/Privon.png';
 
 const Seo: React.FC<SeoProps> = ({ title, description, path, lang = 'en', image = DEFAULT_IMAGE, type = 'website' }) => {
   const url = `${SITE_URL}${path}`;
@@ -45,7 +45,7 @@ const Seo: React.FC<SeoProps> = ({ title, description, path, lang = 'en', image 
           '@type': 'Organization',
           name: 'Privon Foundation',
           url: SITE_URL,
-          logo: `${SITE_URL}/CrytoTool.png`,
+          logo: `${SITE_URL}/Privon.png`,
           description: 'Open-source, privacy-first cybersecurity solutions. Zero data collection, zero tracking, zero knowledge.',
           foundingDate: '2026',
           legalName: 'Privon Foundation',
