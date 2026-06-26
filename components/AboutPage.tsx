@@ -468,7 +468,7 @@ const AboutPage: React.FC = () => {
             </div>
             <div className="flex flex-col md:flex-row justify-between items-center gap-6 w-full">
               <div className="flex items-center gap-4">
-                <Logo className="w-8 h-8" glow={false} color="#fff" />
+                <Logo className="w-12 h-12" glow={false} color="#fff" />
                 <div className="flex flex-col">
                   <span className="font-black tracking-[0.3em] uppercase text-xs leading-none text-white">Privon Foundation</span>
                   <span className="text-[7px] font-mono text-white/50 uppercase tracking-[0.4em] mt-1">For People</span>
