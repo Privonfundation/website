@@ -272,7 +272,7 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose, lang }) => {
         </div>
         <div style={{ width: '60px', height: '1px', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent)' }} />
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <Logo className="w-6 h-6" glow={false} color="#fff" />
+          <Logo className="w-10 h-10" glow={false} color="#fff" />
           <span style={{ fontSize: '8px', fontFamily: 'Fragment Mono, monospace', color: 'rgba(255,255,255,0.15)', textTransform: 'uppercase', letterSpacing: '0.5em' }}>
             Privon Foundation
           </span>

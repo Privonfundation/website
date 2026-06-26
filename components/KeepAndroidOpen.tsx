@@ -132,7 +132,7 @@ export const KeepAndroidOpen: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }
               <div className="relative inline-block">
                 <div className="absolute inset-0 bg-[#ff3333]/10 blur-3xl rounded-full animate-pulse"></div>
                 <div className="relative">
-                  <Logo className="w-20 h-20 md:w-24 md:h-24 opacity-30" glow={false} color="#ff3333" />
+                  <Logo className="w-28 h-28 md:w-32 md:h-32 opacity-30" glow={false} color="#ff3333" />
                 </div>
               </div>
               <div className="mt-6 lg:mt-8">

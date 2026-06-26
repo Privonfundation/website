@@ -345,7 +345,7 @@ const App: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-start gap-16 mb-24">
             <div>
               <div className="flex items-center gap-4 mb-10">
-                <Logo className="w-14 h-14" glow={true} />
+                <Logo className="w-20 h-20" glow={true} />
                 <div className="flex flex-col">
                   <span className="font-black tracking-[0.3em] uppercase text-sm leading-none">Privon Foundation</span>
                   <span className="text-[7px] font-mono text-white/50 uppercase tracking-[0.4em] mt-1">For People</span>

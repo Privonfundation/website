@@ -41,7 +41,7 @@ export const ContributionsNavbar: React.FC<ContributionsNavbarProps> = ({ lang, 
       <nav className="fixed top-0 left-0 w-full z-[100] py-6 md:py-12">
         <div className="max-w-7xl mx-auto px-5 md:px-10 flex justify-between items-center">
           <Link to="/" className="flex items-center gap-3 md:gap-4 group">
-            <Logo className="w-10 h-10 md:w-12 md:h-12 transition-all duration-500 group-hover:shadow-[0_0_20px_#ffffff]" />
+            <Logo className="w-14 h-14 md:w-16 md:h-16 transition-all duration-500 group-hover:shadow-[0_0_20px_#ffffff]" />
             <div className="flex flex-col">
                 <span className="font-black text-[9px] md:text-[12px] tracking-widest uppercase leading-none mb-1 md:mb-1.5">Privon Foundation</span>
               <div className="flex items-center gap-1 md:gap-1.5">
